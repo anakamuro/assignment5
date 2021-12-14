@@ -2,6 +2,8 @@ function photographerFactory(data) {
     const { name, portrait, city, tagline, country, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
+    console.log(picture);
+    console.log(id);
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -18,9 +20,11 @@ function photographerFactory(data) {
         const span2 = document.createElement( 'span' );
         const div = document.createElement( 'div' );
         const mainDiv = document.createElement( 'div' );
-        const id = document.createElement( 'id' );
-
-
+        
+    
+        picture.addEventListener('click', (e)=>{
+            console.log(e.target);
+        });
         
         span1.textContent = "$";
         h6B.textContent = price;
@@ -30,9 +34,10 @@ function photographerFactory(data) {
         a.textContent = ", ";
         h4B.textContent = country;
         h6.textContent = tagline;
+        img.setAttribute("id", id);
 
-        h2.appendChild(id);
-        console.log(id);
+        
+    
         article.appendChild(img);
         span.appendChild(h4);
         span.appendChild(a);
@@ -47,6 +52,7 @@ function photographerFactory(data) {
         mainDiv.appendChild(span);
         mainDiv.appendChild(h6);
         mainDiv.appendChild(div);
+        
         article.appendChild(mainDiv);
         mainDiv.style.lineHeight = .1;
         mainDiv.style.textAlign = "center";
