@@ -1,10 +1,31 @@
+
 //Add JavaScript code linked to the photographer.html page
+
+const images = document.querySelectorAll('img');
+ images.forEach(function(image){
+     image.addEventListener('click', function(){
+        window.location.href ='http://www.localhost:3000/photographer.html';  
+    });
+});
+
+
+
+
+ /*
+  if (imageID) {
+    imageID.forEach((id) => {
+        id.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log(e.target.id)
+           })
+        })
+    }
 /*
 function photographerFactory(data) {
 const { name, portrait, city, tagline, country, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
-    
+
    
 
 picture.addEventListener('click', (e)=>{

@@ -1,9 +1,9 @@
+
 function photographerFactory(data) {
     const { name, portrait, city, tagline, country, price, id } = data;
 
     const picture = `assets/photographers/${portrait}`;
-    console.log(picture);
-    console.log(id);
+    
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -20,12 +20,10 @@ function photographerFactory(data) {
         const span2 = document.createElement( 'span' );
         const div = document.createElement( 'div' );
         const mainDiv = document.createElement( 'div' );
-        
+
     
-        picture.addEventListener('click', (e)=>{
-            console.log(e.target);
-        });
         
+
         span1.textContent = "$";
         h6B.textContent = price;
         span2.textContent = "/day";
