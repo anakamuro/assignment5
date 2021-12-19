@@ -1,10 +1,13 @@
 
 //Add JavaScript code linked to the photographer.html page
+const myUrl = new URL('http://www.localhost:3000/photographer.html/?id');
 
+myUrl.search ="?id=id";
+console.log(myUrl.searchParams.get("id"));
 const images = document.querySelectorAll('img');
  images.forEach(function(image){
      image.addEventListener('click', function(){
-        window.location.href ='http://www.localhost:3000/photographer.html';  
+        window.location.assign ='http://www.localhost:3000/photographer.html/?id';  
     });
 });
 
