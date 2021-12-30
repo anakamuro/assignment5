@@ -33,7 +33,7 @@ header.appendChild(info);
       h6.innerHTML = `$${price}  /day`;
       h4.innerHTML = `${city}, ${country}`;
       h6B.textContent = tagline;
-      img.setAttribute("id", id);
+      img.setAttribute("id", `${id}`);
       //a.setAttribute("href", `photographer.html`);
       
   
@@ -43,15 +43,15 @@ header.appendChild(info);
     
       div.appendChild(h6B);
       mainDiv.appendChild(div);
-      img.setAttribute('id', id)
-      article.innerHTML = `<a href="photographer.html?id=id"><img src=${picture} id=${id}></a>`;
-      console.log('id', id);
+      img.setAttribute('id', `${id}`)
+      article.innerHTML = `<a href="photographer.html?id=${id}"><img src=${picture} id=${id}></a>`;
+      console.log('id', `${id}`);
       article.appendChild(mainDiv);
       mainDiv.style.lineHeight = .1;
       mainDiv.style.textAlign = "center";
       h4.style.color = "#D3573C";
       div.style.color = "gray";
-
+      //article.appendChild(img);
 
       
   
@@ -60,3 +60,4 @@ header.appendChild(info);
   }
   return { name, picture, getUserCardDOM, city, tagline, country, price,  id}
 }
+

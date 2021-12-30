@@ -1,11 +1,52 @@
+const queryStr = '';
+
+const usp = new URLSearchParams({
+    id: 243,
+    id: 930,
+    id: 82,
+    id: 527,
+    id: 925,
+    id: 195
+})
+
+
+const myID = usp.get('id');
+console.log(`Value for 'id': ${myID}`)
+for (const [key, value] of usp) {
+    console.log(`${key} => ${value}`)
+}
+usp.set('name', 'aki');
+usp.set('city', 'dorchester');
+
+
+
+console.log(usp.toString());
+
+
+
+
+
 /*
 $(document).ready(function(){
     $('EllieRoseWilkens.jpg').click( function(){
         window.location.href = this.id  + '.html';
     });
 });
+
+
+const myURL = new URL(`http://localhost:3000/photographer.html`);
+myURL.search ="?id=id";
+
+console.log(myUrl);
+console.log(myUrl.toString())
 */
 
+
+/*
+const image1 = document.querySelector('EllieRoseWilkens.jpg');
+image1.addEventListener('click', function (e) {
+   window.location.href="scripts/pages/Ellie930.html";
+  })
 
 
 //Add JavaScript code linked to the photographer.html page

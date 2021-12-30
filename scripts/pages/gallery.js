@@ -1,4 +1,4 @@
-/*
+
 fetch("photographers.json")
 .then(response => {
    return response.json();
@@ -6,9 +6,10 @@ fetch("photographers.json")
 .then(function(data){
     console.log(data);
 })
-
+/*
 data: {photographers: photographers};
 const data = data.photographer;
+
 
 const { name, portrait, city, tagline, country, price, id } = photographers;
 const header = document.getElementsByClassName('photographe-header');
