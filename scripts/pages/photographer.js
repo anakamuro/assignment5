@@ -1,10 +1,28 @@
+async function getPhotographs() {
+    // TODO : Replace with data from the JSON file
+   return await(await fetch("/data/photographers.json")).json();
+}
 
        
+    async function displayData(photographs) {
+        const photographHeader = document.querySelector(".photograph-header");
+       
+        photographs.forEach((photograph) => {
+            const photographModel = photographFactory(photograph);
+            const userCardDOM = photographModel.getUserCardDOM();
+            photographHeader.appendChild(userCardDOM);
+        });
+    };
     
+    async function init() {
+        // Retreive photographer data
+        const { photographs } = await getPhotographs();
+        displayData(photographs);
+    };
      
 
  
-
+    init();
 
 
 
@@ -39,10 +57,30 @@ var Person = function (name, tagline, country, city, id){
     person.id = id;
     return person;
 }
+*/
 
-var Mimi = Person("Mimi Keel", "See the beauty of daily moments", "UK", "London", 243)
-//console.log(Mimi);
+
+
+
+
+
+
 /*
+   const data = photographers.data;
+function Photographer(data){
+    thid.id = data.id;
+    this.name = data.name;
+    return data
+}
+console.log(data);
+
+
+
+
+/*
+ var Mimi = Person("Mimi Keel", "See the beauty of daily moments", "UK", "London", 243)
+console.log(Mimi);
+
 async function displayData(photographers) {
     const photographSection = document.querySelector(".photograph_section");
    

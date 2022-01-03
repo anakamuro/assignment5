@@ -17,15 +17,7 @@
         });
     };
 
-    async function displayData(photographers) {
-        const photographHeader = document.querySelector(".photograph-header");
-       
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerFactory(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographHeader.appendChild(userCardDOM);
-        });
-    };
+   
 
     async function init() {
         // Retreive photographer data
