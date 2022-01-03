@@ -1,4 +1,4 @@
-/*
+
 fetch("photographers.json")
 .then(response => {
    return response.json();

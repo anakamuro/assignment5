@@ -5,18 +5,24 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographer </title>
+    <script>
+      let params = (new URL(document.location)).searchParams;
+      let id = parseInt(params.get('id'));
+    </script>
   </head>
-  <body onload="javascript:init(name, id);">
+  
+  <body>
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
+      
       <div class="photograph-header">
         <div id="info"></div>
         <button class="contact_button" onclick="displayModal()">Contact Me</button>
-      </div>
-      <div class="photo_section"></div>
+      <div class="photograph_section"></div>
+    </div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -34,11 +40,14 @@
 			</div>
 		</div>
     <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="scripts/factories/photographs.js"></script>
+    <script   src="scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="scripts/factories/Photographer.js"></script>
-    <script src="scripts/pages/photographer.js"></script>
+
+   
   </body>
 </html>

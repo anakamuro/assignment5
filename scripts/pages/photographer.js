@@ -1,92 +1,78 @@
 
+       
+    
+     
 
+ 
+
+
+
+
+/*
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var response = JSON.parse(this.responseText);
+      console.log(response)
+    }
+  };
+  xhttp.open("GET", "photographers.json", true);
+  xhttp.send();
+*/
+/*
+async function getPhotos(id) {
+    // TODO : Replace with data from the JSON file
+   return await fetch(`/photographers/`+`${id}`);
+}
+*/
+/*
+const params = (new URL(document.location)).searchParams;
+const id  = params.get('id');
+
+
+var Person = function (name, tagline, country, city, id){
+    var person= {};
+    person.name = name;
+    person.tagline = tagline;
+    person.country = country;
+    person.city = city;
+    person.id = id;
+    return person;
+}
+
+var Mimi = Person("Mimi Keel", "See the beauty of daily moments", "UK", "London", 243)
+//console.log(Mimi);
+/*
+async function displayData(photographers) {
+    const photographSection = document.querySelector(".photograph_section");
+   
+    photographers.forEach((photographer) => {
+        console.log(photographer);
+        const photographerModel = photographerFactory(photographer);
+        const userCardDOM = photographerModel.getUserCardDOM();
+        photographSection.appendChild(userCardDOM);
+    });
+};
+/*
 const params = (new URL(document.location)).searchParams;
 const id  = params.get('id');
 const name = params.get('name');
+console.log(params);
 
-async function getPhotos(name, id) {
-    // TODO : Replace with data from the JSON file
-   return await fetch(`/assets/images/photographers/` + `${name}` + `${id}/Animals_Rainbow.jpg`);
-}
 
-async function displayData(photos) {
-    const photoSection = document.querySelector(".photo_section");
+
+async function displayData(photographs) {
+    const photographSection = document.querySelector(".photograph_section");
    
-    photos.forEach((photo) => {
-        console.log(photo);
-        const photoModel = photoFactory(photo);
-        const userCardDOM = photoModel.getUserCardDOM();
-        photoSection.appendChild(userCardDOM);
+    photographs.forEach((photograph) => {
+        console.log(photograph);
+        const photographModel = photographFactory(photograph);
+        const userCardDOM = photographModel.getPhotoCardDOM();
+        photographSection.appendChild(userCardDOM);
     });
 };
 
-const photosMimi243 = [`assets/images/photographers/Mimi243/Animal_Rainbow.jpg`,
-`assets/images/photographers/Mimi243/Event_BenevidesWedding.jpg`,
-`assets/images/photographers/Mimi243/Event_PintoWedding.jpg`,
-`assets/images/photographers/Mimi243/Event_SeasideWedding.jpg`,
-`assets/images/photographers/Mimi243/Portrait_Background.jpg`,
-`assets/images/photographers/Mimi243/Portrait_Nora.jpg`,
-`assets/images/photographers/Mimi243/Portrait_Wednesday.jpg`,
-`assets/images/photographers/Mimi243/Travel_Hillside.jpg`,
-`assets/images/photographers/Mimi243/Travel_Lonesome.jpg`,
-]
 
-const photosTracy82 = [ `assets/images/photographers/Tracy82/Art_mine.jpg`,
-`assets/images/photographers/Tracy82/Art_Mine.jpg`,
-`assets/images/photographers/Tracy82/Art_Purple_light.jpg`,
-`assets/images/photographers/Tracy82/Art_Triangle_Man.jpg`,
-`assets/images/photographers/Tracy82/Event_Sparklers.jpg`,
-`assets/images/photographers/Tracy82/Event_WeddingGazebo.jpg`,
-`assets/images/photographers/Tracy82/Fashion_Pattern_on_Pattern.jpg`,
-`assets/images/photographers/Tracy82/Fashion_Urban_Jungle.jpg`,
-`assets/images/photographers/Tracy82/Fashion_Yellow_Beach.jpg`,
-]
-
-const photosNabeel527 = [ `assets/images/photographers/Nabeel527/Portrait_Afternoon.jpg`,
-`assets/images/photographers/Nabeel527/Portrait_Alexandra.jpg`,
-`assets/images/photographers/Nabeel527/Portrait_Shaw.jpg`,
-`assets/images/photographers/Nabeel527/Portrait_Sunkissed.jpg`,
-`assets/images/photographers/Nabeel527/Travel_Boat_Wonderer.jpg`,
-`assets/images/photographers/Nabeel527/Travel_Bridge_into_Forest.jpg`,
-`assets/images/photographers/Nabeel527/Travel_On_the_Road.jpg`,
-`assets/images/photographers/Nabeel527/Travel_Outdoor_Baths.jpg`,
-`assets/images/photographers/Nabeel527/Travel_Road_into_Hill.jpg`,
-]
-
-const photosRhode925 = [ `assets/images/photographers/Rhode925/Animal_Majesty.jpg`,
-`assets/images/photographers/Rhode925/Event_Emcee.jpg`,
-`assets/images/photographers/Rhode925/Event_keyboardCheck.jpg`,
-`assets/images/photographers/Rhode925/Event_ProductPItch.jpg`,
-`assets/images/photographers/Rhode925/EventVentureConference.jpg`,
-`assets/images/photographers/Rhode925/Fashion_Melody_Red_On_Stripes.jpg`,
-`assets/images/photographers/Rhode925/Fashion_Wings.jpg`,
-`assets/images/photographers/Rhode925/Sport_2000_with_8.jpg`,
-`assets/images/photographers/Rhode925/Sport_Butterfly.jpg`,
-]
-
-const photosMarcel195 = [ `assets/images/photographers/Marcel195/Architecture_Corner_Room.jpg`,
-`assets/images/photographers/Marcel195/Architecture_Dome.jpg`,
-`assets/images/photographers/Marcel195/Architecture_On_a_hill.jpg`,
-`assets/images/photographers/Marcel195/Architecture_Contrast.jpg`,
-`assets/images/photographers/Marcel195/Travel_adventure.jpg`,
-`assets/images/photographers/Marcel195/Travel_Bike_and_Stair.jpg`,
-`assets/images/photographers/Marcel195/Travel_Open_Mountain.jpg`,
-`assets/images/photographers/Marcel195/Travel_SunsetonCanals.jpg`,
-`assets/images/photographers/Marcel195/Travel_Tower.jpg`,
-`assets/images/photographers/Marcel195/Architecture_Corner_Room.jpg`,
-]
-
-const photosEllie930 = [ `assets/images/photographers/Ellie930/Architecture_Connected_Curves.jpg`,
-`assets/images/photographers/Ellie930/Architecture_Cross_Bar.jpg`,
-`assets/images/photographers/Ellie930/Architecture_HorseShoe.jpg`,
-`assets/images/photographers/Ellie930/Architecture_Water_on_Modern.jpg`,
-`assets/images/photographers/Ellie930/Architecture_White_light.jpg`,
-`assets/images/photographers/Ellie930/Sport_Jump.jpg`,
-`assets/images/photographers/Ellie930/Sport_Next_Hold.jpg`,
-`assets/images/photographers/Ellie930/Sport_Race_End.jpg`,
-`assets/images/photographers/Ellie930/Sport_Sky_Cross.jpg`,
-`assets/images/photographers/Ellie930/Sport_water_tunnel.jpg`,
-]
 
 var map = new Map();
 
@@ -99,14 +85,15 @@ map.set("Ellie930", photosEllie930);
 
 async function init(name, id) {
     // Retreive photographer data
-    const  photos  = map.get(`${name}` + `${id}`)
-    displayData(photos);
-    console.log(photos)
+    const  photographs  = map.get(`${name}` + `${id}`)
+    displayData(photographs);
+    console.log(photographs);
 };
 
 init();
 
 
+           
 
 
 
@@ -123,7 +110,6 @@ init();
 
 
 
-/*
 console.log(`Value for 'id': ${myID}`)
 for (const [key, value] of usp) {
     console.log(`${key} => ${value}`)

@@ -18,7 +18,8 @@ function photographerFactory(data) {
       const mainDiv = document.createElement( 'div' );
       const a = document.createElement( 'a' );
      a.href =`photographer.html`;
- /*    const header = document.getElementsByClassName('photograph-header');
+     /*
+    const header = document.getElementsByClassName('photograph-header');
 const h2B = document.createElement( 'h2' );
 const div2 = document.createElement( 'div' );
  document.getElementById('info') = `${city}, ${country}`;
@@ -28,7 +29,8 @@ div2.appendChild(h2B);
 h2B.textContent = name;
 info.appendChild(h2B);
 header.appendChild(info);
-  header.innerText = "hello";*/
+  header.innerText = "hello";
+  */
       h2.textContent = name;
       h6.innerHTML = `$${price}  /day`;
       h4.innerHTML = `${city}, ${country}`;
