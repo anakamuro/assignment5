@@ -1,4 +1,4 @@
- function photographFactory(data){
+ function photographerFactory(data){
     const { name, portrait, city, tagline, country, price, id } = data;
      const picture = `assets/photographers/${portrait}`;
     console.log(name);
@@ -38,5 +38,5 @@
          div.style.color ="gray";
          return(article);
      }
-     return {getUserCardDOM, photograph}
+     return {name, picture, getUserCardDOM, city, tagline, country, price,  id}
     }

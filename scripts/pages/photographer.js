@@ -4,6 +4,52 @@ async function getPhotographs() {
 }
 
        
+    async function displayData(photographers) {
+        const photographerHeader = document.querySelector(".photograph-header");
+       
+        photographers.forEach((photographer) => {
+            const photographerModel = photographerFactory(photographer);
+            const userCardDOM = photographerModel.getUserCardDOM();
+            photographerHeader.appendChild(userCardDOM);
+        });
+    };
+    
+    async function init() {
+        // Retreive photographer data
+        const { photographers } = await getPhotographs();
+        displayData(photographers);
+    };
+     
+
+ 
+    init();
+
+
+
+  
+   
+/*
+  header.innerHTML = `<div class="photograph-header">
+  <div id="info">${name}</div>
+  <button class="contact_button" onclick="displayModal()">Contact Me</button>
+<div class="photograph_section"></div>
+</div>`;
+
+
+  var Person = function (name, tagline, country, city, id){
+    var person= {};
+    person.name = name;
+    person.tagline = tagline;
+    person.country = country;
+    person.city = city;
+    person.id = id;
+    return person;
+}
+console.log('person');
+
+    
+
+  /*
     async function displayData(photographs) {
         const photographHeader = document.querySelector(".photograph-header");
        
