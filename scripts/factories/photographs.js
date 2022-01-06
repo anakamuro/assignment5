@@ -1,4 +1,4 @@
- function photographFactory(data){
+ function photographerFactory(data){
     const { name, portrait, city, tagline, country, price, id } = data;
      const picture = `assets/photographers/${portrait}`;
     console.log(name);
@@ -10,7 +10,7 @@
         const div = document.createElement( 'div' );
         const mainDiv = document.createElement( 'div' );
          const img = document.createElement('img');
-         img.setAttribute('id', `${id}`)
+       //  img.setAttribute('id', `${id}`)
          img.setAttribute("src", picture);
          mainDiv.appendChild(div);
         // article.innerHTML= `<img src=${picture}>`;
@@ -29,7 +29,8 @@
       info.appendChild(mainDiv);
       const photoplace = document.querySelector('.photo_section');
       photoplace.appendChild(img);
-      img.className=".image-font"
+     // img.className=".image-font";
+      //img.style.width="100px";
       header.appendChild(photoplace);
      /*  const info = document.getElementById('info');
      h2.textContent = name;

@@ -8,7 +8,7 @@ async function getPhotographers() {
         const photographerHeader = document.querySelector(".photograph-header");
        
         photographers.forEach((photographer) => {
-            const photographerModel = photographFactory(photographer);
+            const photographerModel = photographerFactory(photographer);
             const userPhotoDOM = photographerModel.getUserPhotoDOM();
             console.log(photographerModel)
             photographerHeader.appendChild(userPhotoDOM);
