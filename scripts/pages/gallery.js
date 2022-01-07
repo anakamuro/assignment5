@@ -1,11 +1,31 @@
+/*
+async function getPhotographers() {
+    // TODO : Replace with data from the JSON file
+   return await(await fetch("/data/photographers.json")).json();
+}
 
-fetch("photographers.json")
-.then(response => {
-   return response.json();
-})
-.then(function(data){
-    console.log(data);
-})
+       
+    async function displayData(media) {
+        const photographerSection = document.querySelector(".photograph-section");
+       
+        media.forEach((medium) => {
+            const photographerModel = photographsFactory(medium);
+            const userPhotosDOM = photographerModel.getUserPhotosDOM();
+            console.log(userPhotosDOM)
+            photographerSection.appendChild(userPhotosDOM);
+        });
+    };
+    
+    async function init() {
+        // Retreive photographer data
+        const { media } = await getPhotographers();
+        displayData(media);
+    };
+     
+
+ 
+    init();
+
 /*
 data: {photographers: photographers};
 const data = data.photographer;

@@ -7,6 +7,7 @@
          const h2 = document.createElement( 'h2' );
          const h4 = document.createElement( "h4" );
          const h6 = document.createElement( 'h6' );
+         const h6B = document.createElement( 'h6' );
         const div = document.createElement( 'div' );
         const mainDiv = document.createElement( 'div' );
          const img = document.createElement('img');
@@ -30,7 +31,9 @@
       const photoplace = document.querySelector('.photo_section');
       photoplace.appendChild(img);
      // img.className=".image-font";
-      //img.style.width="100px";
+      img.style.width="100px";
+      img.style.height="100px";
+      img.style.borderRadius="50%";
       header.appendChild(photoplace);
      /*  const info = document.getElementById('info');
      h2.textContent = name;
