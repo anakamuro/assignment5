@@ -6,20 +6,16 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographer </title>
-    <script>
-      let params = (new URL(document.location)).searchParams;
-      let id = parseInt(params.get('id'));
-    </script>
   </head>
   
-  <body onload="javascript:init(id);">
+  <body>
     <header>
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
       
       <div class="photograph-header">
-        <div id="info"></div>
+        <div class="info"></div>
         <button class="contact_button" onclick="displayModal()">Contact Me</button>
       <div class="photo_section"></div>
     </div>

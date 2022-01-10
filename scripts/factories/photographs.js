@@ -1,12 +1,12 @@
- function photographerFactory(data){
-    const { name, portrait, city, tagline, country, price, id } = data;
+ function photographerFactory(photographers){
+    const { name, portrait, city, tagline, country, price, id } = photographers;
      const picture = `assets/photographers/${portrait}`;
     console.log(name);
      function getUserPhotoDOM(){
          const header = document.createElement('header');
-         const h2 = document.createElement( 'h2' );
-         const h4 = document.createElement( "h4" );
-         const h6 = document.createElement( 'h6' );
+      //   const h2 = document.createElement( 'h2' );
+       //  const h4 = document.createElement( "h4" );
+       //  const h6 = document.createElement( 'h6' );
          const h6B = document.createElement( 'h6' );
         const div = document.createElement( 'div' );
         const mainDiv = document.createElement( 'div' );
@@ -16,25 +16,24 @@
          mainDiv.appendChild(div);
         // article.innerHTML= `<img src=${picture}>`;
         // article.appendChild(mainDiv);
-        h2.textContent = name;
-      h4.innerHTML = `${city}, ${country}`;
-      h6.textContent = tagline;
+     //   h2.textContent = name;
+     ///h6.textContent = tagline;
      //   const header = document.getElementsByClassName('photographe-header');
-        div.appendChild(h2);
-      div.appendChild(h4);
-      div.appendChild(h6);
+       // div.appendChild(h2);
+      //div.appendChild(h4);
+      //div.appendChild(h6);
     
       mainDiv.appendChild(div);
       header.appendChild(mainDiv);
-      const info = document.getElementById('info');
-      info.appendChild(mainDiv);
+    //  const info = document.getElementById('info');
+      //info.appendChild(mainDiv);
       const photoplace = document.querySelector('.photo_section');
-      photoplace.appendChild(img);
+   //   photoplace.appendChild(img);
      // img.className=".image-font";
       img.style.width="100px";
       img.style.height="100px";
       img.style.borderRadius="50%";
-      header.appendChild(photoplace);
+  //    header.appendChild(photoplace);
      /*  const info = document.getElementById('info');
      h2.textContent = name;
     info.appendChild(h2);
