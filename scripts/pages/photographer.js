@@ -84,12 +84,9 @@ function fetchData() {
     })
     .then(data=>{
      console.log(data);
-   //  const { portrait } = data;
-  //   const picture = `assets/photographers/${portrait}`;
      const photographers = data.photographers;
       photographers.map((photographer) =>{
-        const { portrait } = data;
-         const picture = `assets/photographers/${portrait}`;
+ 
          if(photographer.id === pid){
             document.querySelector('.photograph-header').innerHTML =   `<div class="photograph-header">
             <div id="info">
@@ -112,6 +109,36 @@ function fetchData() {
   }
 
  fetchData();
+
+ function fetchPic() {
+    fetch(`/data/photographers.json`)
+    .then(response =>{
+        if(!response.ok){
+            throw Error('ERROR')
+        }
+      return response.json();
+    })
+    .then(data=>{
+     console.log(data);
+     const media = data.media;
+      media.map((medium) =>{
+ 
+         if(medium.photographerId === pid){
+            document.querySelector('.photograph_section').innerHTML =   `
+            <img src="${medium.image}" class="img">
+            <div>${medium.image}${medium.title}${medium.likes}</div>`;
+         }
+     })
+     //.join('');
+    
+    })
+
+    .catch(error =>{
+        console.log(error);
+    })
+  }
+
+ fetchPic();
 
 
 
