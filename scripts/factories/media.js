@@ -145,12 +145,13 @@ function getPhotographerMediaList(ID, MediaList)
         Sport_Jump.jpg, Sport_Next_Hold.jpg, Sport_Race_End.jpg, Sport_Sky_Cross.jpg, sport_water_tunnel.jpg]);
 
 // if(medium.photographerId === pid || medium.photographerId === !undefined){
-         //   for (let i = 0; i < medium.image.length; i++) {
+            for (let i = 0; i < newmediaList.length; i++) {
             document.querySelector('.photograph_section').innerHTML =   `
-           <img src='/assets/images/photographers/${ID}/${newmediaList}'>
+           <img src='/assets/images/photographers/${ID}/${newmediaList[i]}'>
             `
+			}
   /*        
-      //  }
+        }
      // }
     })
      //.join('');
