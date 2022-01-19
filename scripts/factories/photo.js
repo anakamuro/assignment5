@@ -1,6 +1,7 @@
 
-function photographsFactory(media){
-    const {title, image, likes}  = media;
+function photographsFactory(medium){
+    const {title, image, likes}  = medium;
+
 
      function getUserPhotosDOM(){
          const article = document.createElement('article');
@@ -9,14 +10,14 @@ function photographsFactory(media){
          const mainDiv2  = document.createElement( 'div' );
          const span2  = document.createElement( 'span' );
        //  img.setAttribute('id', `${id}`)
-      article.innerHTML= `<img src='/assets/images/photographers/${pid}/${image}' id=${pid} class="img">`;
-      const a = '/assets/images/photographers/${medium.photographerId}/${medium.image}';
-            if(a === undefined){
-                a === '';
-            }
+    //  article.innerHTML= `<img src='/assets/images/photographers/${pid}/${image}' id=${pid} class="img">`;
+    //  const a = '/assets/images/photographers/${medium.photographerId}/${medium.image}';
+      //      if(a === undefined){
+         //       a === '';
+        //    }
         // article.appendChild(mainDiv);
       span2.innerHTML =`${title}       ${likes}`; 
- //     img.setAttribute("src", `/assets/images/photographers/${pid}/${image}`);
+   img.setAttribute("src", `/assets/images/photographers/${pid}/${image}`);
     //  img.className(img);
   //    span2.appenChild(h6B);
       mainDiv2.appendChild(img);
@@ -32,7 +33,8 @@ function photographsFactory(media){
       header.appendChild(info);
          mainDiv.style.lineHeight = .1;
          mainDiv.style.textAligh ="center";
-         div.style.color ="gray";*/
+         div.style.color ="gray";*/ 
+         
          return(article);
      }
      return {title, image, likes, getUserPhotosDOM }

@@ -3,7 +3,11 @@ async function getPhotographers() {
     // TODO : Replace with data from the JSON file
    return await(await fetch("/data/photographers.json")).json();
 }
-
+/*
+async function getPhotographerMediaList(){
+    return (await fetch(`/assets/images/photographers/${pid}/${newmediaList}`));
+}
+*/
        
     async function displayData(media) {
         const photographerSection = document.querySelector(".photograph_section");
@@ -18,7 +22,13 @@ async function getPhotographers() {
     
     async function init() {
         // Retreive photographer data
-        const { media } = await getPhotographers();
+        const { media } = await  getPhotographers();
+        displayData(media);
+    };
+    /*
+    async function init() {
+        // Retreive photographer data
+        const { media } = await  getPhotographerMediaList(pid);
         displayData(media);
     };
      

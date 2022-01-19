@@ -61,8 +61,6 @@ const info = document.getElementById('info');
 			"portrait": "MarcelNikolic.jpg"
 		}
 	]`
-
-
 console.log(JSON.parse(photographers));
 const photographer = (JSON.parse(photographers));
 console.log(photographer);*/
@@ -111,7 +109,7 @@ function fetchData() {
   }
 
  fetchData();
-
+/*
  function fetchPic() {
     fetch(`/data/photographers.json`)
     .then(response =>{
@@ -125,17 +123,14 @@ function fetchData() {
      const media = data.media;
       media.map((medium) =>{
         
-       if(medium.photographerId === pid || medium.photographerId === !undefined){
+      // if(medium.photographerId === pid || medium.photographerId === !undefined){
          //   for (let i = 0; i < medium.image.length; i++) {
             document.querySelector('.photograph_section').innerHTML =   `
            <img src='/assets/images/photographers/${pid}/${medium.image}'>
             <div>${medium.title}${medium.likes}</div>
             `
-            const a = '/assets/images/photographers/${medium.photographerId}/${medium.image}';
-            if(a === undefined){
-                a === '';
-            }
-        }
+          
+      //  }
      // }
     })
      //.join('');
@@ -224,9 +219,7 @@ async function init(){
     console.log(photographers)
     document.querySelector('.photograph-header').innerHTML = `name`
 }
-
 init()
-
 function init(id){
 fetch('/data/photographers.json')
 .then(response =>response.json())
@@ -236,7 +229,5 @@ fetch('/data/photographers.json')
     document.querySelector('.photograph-header').innerHTML = `${json.photographers[i].name}`
 }})
 }
-
 init()
-
 */

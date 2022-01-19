@@ -9,8 +9,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
+    gap: 200px;
 }
+.photograph_section img {
+    height: 200px;
+    width: 200px;
+}
+.img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    }
 /*
 #info {
     position: absolute;
@@ -94,3 +103,166 @@ form input {
     height: 100px;
     border-radius: 50%;
     }
+    .drop-dowm-menu{
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+      }
+      .order {
+        font-weight: 600;
+        position: relative;
+        top: 15px;
+      }
+      
+      .menu {
+        height: 70px;
+        width: 200px;
+        display: flex;
+        border-bottom: 2px solid white;
+        justify-content: space-around;
+        vertical-align: center;
+        align-items: center;
+        text-align: center;
+        background-color: #8e1d1c;
+        color: white;
+        position: relative;
+        margin-bottom: 10px;
+        border-radius: 5%;
+      }
+      
+      .menu-title {
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 2px solid white;
+        width: 150px;
+        margin-bottom: 5px;
+        padding-bottom: 10px;
+      }
+      
+      .sub-menu {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0px;
+        background: #b9b9b9;
+        background-color: #8e1d1c;
+        height: 100px;
+        width: 200px;
+        border-bottom: 2px solid white;
+        border-bottom-right-radius: 5%;
+        border-bottom-left-radius: 5%;
+      }
+      .sub-menu ul li a {
+        text-decoration: none;
+        color: white;
+      }
+      
+      .sub-menu ul li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      sub-menu ul {
+        height: 100px;
+        float: left;
+        padding: 0;
+      }
+      
+      .sub-menu li:first-child {
+        height: 70px;
+        width: 150px;
+        color: white;
+      }
+      .sub-menu li:first-child a {
+        display: flex;
+        justify-content: flex-start;
+      }
+      .sub-menu li:first-child::after {
+        content: "";
+        height: 70px;
+        display: block;
+        position: relative;
+        left: 0px;
+        top: -20px;
+        width: 150px;
+        color: white;
+        border-bottom: 2px solid white;
+      }
+      .date {
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        top: -20px;
+        left: 0px;
+        width: 180px;
+        margin-left: 0px;
+        margin-bottom: 5px;
+        padding-bottom: 10px;
+      }
+      .date::after {
+        content: '';
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        top: 15px;
+        left: -48px;
+        border-bottom: 2px solid white;
+        width: 150px;
+        margin-left: 0px;
+        
+      }
+      .title {
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+        top: -20px;
+        left: -60px;
+        width: 150px;
+        margin-bottom: 5px;
+        padding-bottom: 10px;
+      }
+      .sub-menu li:second-child {
+        height: 0px;
+        width: 80%;
+        list-style: none;
+        position: relative;
+        line-height: 70px;
+      }
+      .sub-menu li:second-child::after {
+        content: "";
+        display: block;
+        height: 50px;
+        width: 80%;
+        position: absolute;
+        top: 100px;
+        list-style: none;
+        padding-top: 50px;
+      }
+      /*
+      .icon2 {
+        position: relative;
+        left: 9px;
+        display: none;
+      }
+      .icon3 {
+        position: relative;
+        left: 9px;
+        display: none;
+      }
+      */
+      .menu .menu-title .icon1 {
+        display: none;
+      }
+      .icon4 {
+        display: inline;
+      }
+      .menu:hover .sub-menu {
+        display: inline-block;
+      }
+      .menu:hover .icon1 {
+        display: inline-block;
+      }
+      .menu:hover .icon4 {
+        display: none;
+      }
