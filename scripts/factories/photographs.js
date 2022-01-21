@@ -30,8 +30,8 @@ function photographerFactory(photographers){
       const photoplace = document.querySelector('.photo_section');
    //   photoplace.appendChild(img);
      // img.className=".image-font";
-      img.style.width="100px";
-      img.style.height="100px";
+      img.style.width="200px";
+      img.style.height="200px";
       img.style.borderRadius="50%";
   //    header.appendChild(photoplace);
      /*  const info = document.getElementById('info');

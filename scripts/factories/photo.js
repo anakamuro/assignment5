@@ -1,4 +1,39 @@
+/*
+const lightbox = document.createElement('div');
+lightbox.id  = 'lightbox';
+document.body.appendChild(lightbox);
 
+const images = document.querySelectorAll('.grid img');
+images.forEach(image =>{
+  image.addEventListener('click', e =>{
+    lightbox.classList.add('active')
+    console.log(image);
+    const img = document.createElement('img');
+    img.src = image.src
+    while(lightbox.firstChild){
+      lightbox.removeChild(lightbox.firstChild)
+    }
+    lightbox.appendChild(img)
+    console.log(lightbox)
+  })
+})
+
+lightbox.addEventListener('click',e => {
+  if(e.target !== e.currrentTarget) return
+  lightbox.classList.remove('active')
+} )
+
+
+
+
+
+
+
+
+
+
+
+/*
 function photographsFactory(medium){
     const {title, image, likes}  = medium;
 
@@ -16,6 +51,8 @@ function photographsFactory(medium){
          //       a === '';
         //    }
         // article.appendChild(mainDiv);
+        const params = (new URL(document.location)).searchParams;
+        let pid = parseInt(params.get('id'));
       span2.innerHTML =`${title}       ${likes}`; 
    img.setAttribute("src", `/assets/images/photographers/${pid}/${image}`);
     //  img.className(img);
@@ -34,8 +71,9 @@ function photographsFactory(medium){
          mainDiv.style.lineHeight = .1;
          mainDiv.style.textAligh ="center";
          div.style.color ="gray";*/ 
-         
+         /*
          return(article);
      }
      return {title, image, likes, getUserPhotosDOM }
     }
+*/

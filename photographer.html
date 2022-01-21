@@ -17,13 +17,13 @@
   
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       
       <div class="photograph-header">
         <div class="info"></div>
-        <button class="contact_button" onclick="displayModal()">Contact Me</button>
+        <button class="contact_button" onclick="displayModal()"><pre>Contact Me</pre></button>
       <div class="photo_section"></div>
     </div>
     </main>
@@ -46,7 +46,11 @@
         </div>
       </div>
     </div>
-    <div class="photograph_section"></div>
+    <div class="photograph_section grid">
+      <div id="lightbox"></div>
+    </div>
+
+    <div class="video_section"></div>
     <div id="contact_modal">
 			<div class="modal">
 				<header>

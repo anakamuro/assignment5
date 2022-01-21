@@ -1,10 +1,7 @@
 //import "/css/photographer.css";
 
 const info = document.getElementById('info');
-
- params = (new URL(document.location)).searchParams;
- let pid = parseInt(params.get('id'));
-  /*
+/*
   const photographers = `[
 		{
 			"name": "Mimi Keel",
@@ -86,13 +83,16 @@ function fetchData() {
      console.log(data);
      const photographers = data.photographers;
       photographers.map((photographer) =>{
- 
+
+        const params = (new URL(document.location)).searchParams;
+        let pid = parseInt(params.get('id'));
+
          if(photographer.id === pid){
             document.querySelector('.photograph-header').innerHTML =   `<div class="photograph-header">
             <div id="info">
-                  <h2 class="name" style="color: #D3573C;">${photographer.name}</h2>
-                  <h4 class="place" style="color: #D3573C;">${photographer.city}, ${photographer.country}</h4>
-                  <h4 class="line" style="color: gray;">${photographer.tagline}</h4>
+                  <h2 class="name"><pre>${photographer.name}</pre></h2>
+                  <h4 class="place">${photographer.city}, ${photographer.country}</h4>
+                  <h4 class="line"><pre>${photographer.tagline}</pre></h4>
                   </div> 
                   <button class="contact_button" onclick="displayModal()">Contact Me</button>
                   <div class="photo_section"><img src="assets/photographers/${photographer.portrait}" class="img"></div>
