@@ -107,11 +107,11 @@ function getPhotographerMediaList(ID) {
     })
     .then((media) => {
 
-      
+      if (media.id !== 8328953 | 83958935 | 394583434 | 5234343 | 9259398453 | 952343423){
       const images = [];
       for (let i = 0; i < media.length; i++) {
         //  console.log(media[i]);
-          const img = `<div class="img-set"><img src='/assets/images/photographers/${ID}/${media[i].image}' class="img2"></img>
+          const img = `<div class="img-set"><a href='/assets/images/photographers/${ID}/${media[i].image}' data-lightbox="mygallery" class="img-big"><img src='/assets/images/photographers/${ID}/${media[i].image}' class="img2"></img></a>
           <div class="title-set"><span class="title2">${media[i].title}</span>        <span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
           </div>`  
           images.push(img);
@@ -125,6 +125,20 @@ function getPhotographerMediaList(ID) {
 
       }
       document.querySelector(".grid").innerHTML = images.join('\n');
+    } else {
+      const videos = [];
+      for (let i = 0; i < media.length; i++) {
+          console.log(media[i]);
+          const video = `<div class="video-set"><video src='/assets/images/photographers/${ID}/${media[i].video}'></video>
+          <div class="title-set"><span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
+          </div>`
+          videos.push(video);
+      //  document.querySelector(".photograph_section").innerHTML = `
+      //             <img src='/assets/images/photographers/${ID}/${media[i].image}'>
+        //              `;
+      }  
+      document.querySelector(".grid").innerHTML = videos.join('\n');
+    }
     });
 }
 getPhotographerMediaList(ID);
@@ -132,11 +146,11 @@ getPhotographerMediaList(ID);
 const lightbox = document.createElement('div');
 lightbox.id  = 'lightbox';
 const grid = document.querySelector('.grid')
-grid.appendChild(lightbox);
-grid.appendChild(images2);
+//grid.appendChild(lightbox);
+//grid.appendChild(images2);
 document.body.appendChild(lightbox);
 
-const images2 = document.querySelectorAll('img');
+const images2 = document.querySelectorAll('.grid img');
 images2.forEach(image =>{
   image.addEventListener('click', e =>{
     console.log('clicked');
@@ -158,7 +172,7 @@ lightbox.addEventListener('click',e => {
 } )
 
 function getVideoMediaList(ID) {
-  fetch(`/data/photographers.json`)
+  fetch(`./../../data/photographers.json`)
     .then((response) => {
       if (!response.ok) {
         throw Error("ERROR");
@@ -179,7 +193,8 @@ function getVideoMediaList(ID) {
       console.log(newmediaList)
     //  return newmediaList;
     })
-    .then((media) => {
+    .then((media) => { 
+      if (media.id === 8328953 | 83958935 | 394583434 | 5234343 | 9259398453 | 952343423){
       const videos = [];
       for (let i = 0; i < media.length; i++) {
           console.log(media[i]);
@@ -191,7 +206,8 @@ function getVideoMediaList(ID) {
       //             <img src='/assets/images/photographers/${ID}/${media[i].image}'>
         //              `;
       }  
-      document.querySelector(".video_section").innerHTML = videos.join('\n');
+      document.querySelector(".grid").innerHTML = videos.join('\n');
+    }
     });
 }
 getVideoMediaList(ID);
