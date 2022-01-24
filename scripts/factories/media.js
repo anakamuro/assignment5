@@ -107,31 +107,19 @@ function getPhotographerMediaList(ID) {
     })
     .then((media) => {
 
-      if (media.mediaType === media.image){
+      
       const images = [];
       for (let i = 0; i < media.length; i++) {
         //  console.log(media[i]);
-          const img = `<div class="img-set"><a href='/assets/images/photographers/${ID}/${media[i].mediaURL}' data-lightbox="mygallery" class="img-big"><img src='/assets/images/photographers/${ID}/${media[i].mediaURL}' class="img2"></img></a>
+          const img = `<div class="img-set"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' class="img2"></img></a>
           <div class="title-set"><span class="title2">${media[i].title}</span>        <span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
           </div>`  
           images.push(img)
 
       }
       document.querySelector(".grid").innerHTML = images.join('\n');
-    } else {
-      if (media.mediaType === media.video){
-      const videos = [];
-      for (let i = 0; i < media.length; i++) {
-          console.log(media[i]);
-          const video = `<div class="video-set"><a href='/assets/images/photographers/${ID}/${media[i].mediaURL}' data-lightbox="mygallery" class="img-big"><video src='/assets/images/photographers/${ID}/${media[i].mediaURL}'></video></a>
-          <div class="title-set"><span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
-          </div>`
-          videos.push(video);
-                
-      }  
-      document.querySelector(".grid").innerHTML = videos.join('\n');
-    }
-  }
+  
+  
     });
 }
 getPhotographerMediaList(ID);
@@ -163,7 +151,7 @@ lightbox.addEventListener('click',e => {
   if(e.target !== e.currrentTarget) return
   lightbox.classList.remove('active')
 } )
-/*
+
 function getVideoMediaList(ID) {
   fetch(`./../../data/photographers.json`)
     .then((response) => {
@@ -187,11 +175,10 @@ function getVideoMediaList(ID) {
     //  return newmediaList;
     })
     .then((media) => { 
-      if (media.mediaType === media.video){
       const videos = [];
       for (let i = 0; i < media.length; i++) {
           console.log(media[i]);
-          const video = `<div class="video-set"><video src='/assets/images/photographers/${ID}/${media[i].mediaURL}'></video>
+          const video = `<div class="video-set"><a href='/assets/images/photographers/${ID}/${media[i].video}'  class="img-big"><video src='/assets/images/photographers/${ID}/${media[i].video}'></video></a>
           <div class="title-set"><span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
           </div>`
           videos.push(video);
@@ -200,7 +187,7 @@ function getVideoMediaList(ID) {
         //              `;
       }  
       document.querySelector(".grid").innerHTML = videos.join('\n');
-    }
+    
     });
 }
 getVideoMediaList(ID);

@@ -42,14 +42,21 @@ function photographerFactory(data) {
         div.appendChild(h2);
         div.appendChild(h4);
         div.appendChild(h6);
-      
         div.appendChild(h6B);
         mainDiv.appendChild(div);
+        mainDiv.className = "text";
+      
+        article.innerHTML = `<a href="photographer.html?id=${id}"><img src=${picture} id=${id}/></a>
+        `;
+       
+       
         img.setAttribute('id', `${id}`)
-        article.innerHTML = `<a href="photographer.html?id=${id}"><img src=${picture} id=${id}></a>`;
         console.log('id', `${id}`);
         article.appendChild(mainDiv);
-        mainDiv.style.lineHeight = .1;
+        h2.style.lineHeight = .1;
+        h4.style.lineHeight = .1;
+        h6.style.lineHeight = .1;
+    ;
         mainDiv.style.textAlign = "center";
         h4.style.color = "#D3573C";
         div.style.color = "gray";
