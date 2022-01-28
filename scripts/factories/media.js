@@ -1,7 +1,76 @@
-/*params = (new URL(document.location)).searchParams;
-let pid = parseInt(params.get('id'));
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+  document.querySelector(".title-set").style.display = "none";
+}
 
-function fetchPic() {
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+  document.querySelector(".title-set").style.display = "block";
+}
+
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+/*
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+}
+*/
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+ // var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+ // slides[slideIndex-1].style.display = "block";
+  //dots[slideIndex-1].className += " active";
+ // captionText.innerHTML = dots[slideIndex-1].alt;
+}
+/*
+function rightMedia(){
+if(media.image == undefined){
+  getVideoMediaList(ID)
+}
+if(media.video == undefined){
+  getPhotographerMediaList(ID)
+}
+}
+rightMedia();
+*/
+
+
+
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const photographerID = urlParams.get('id');
+
+let selectedOrder;
+let modalMediaIndex = 0;
+
+function fetchData() {
     fetch(`/data/photographers.json`)
     .then(response =>{
         if(!response.ok){
@@ -9,77 +78,95 @@ function fetchPic() {
         }
       return response.json();
     })
-    .then(data=>{
-     console.log(data);
-     const media = data.media;
-      media.map((medium) =>{
-        
-      
-	
-function getImage(){
-    if(`${medium.photographerId}` === "82"){
-		var i = 0;
-	 var image = [Art_Mine.jpg, Art_Purple_lighht.jpg, Art_Triangle_Man.jpg, Event_18thSnniversary.jpg, Event_Sparklers.jpg,
-        Event_WeddingGazebo.jpg, Fashion_Pattern_on_Pattern.jpg, Fasion_Urban_Jungle.jpg, Fashion_Yellow_Beach.jpg];
-		console.log(image[0])
-		for(var i=0; i<image.length;i++){
-			document.querySelector('.photograph_section').innerHTML =   `
-			<img src='/assets/images/photographers/${medium.photographerId}/${medium.image[i]}'>
-			 <div>${medium.title}${medium.likes}</div>
-			 `
-		}
-    }
-	if(`${medium.photographerId}` === "195"){
-		for(var i=0; i<image.length;i++)
-	image[i] = [Architecture_Corner_Room.jpg, Architecture_Dome.jpg,  Architecture_On_a_hill.jpg,  Architecture_Contrast.jpg, Travel_Adventure_Door.jpg,
-        Travel_Bike_and_Stair.jpg, Travel_OpenMountain.jpg, Travel_OpenMountains.jpg, Travel_SunsetonCanals.jpg, Travel_Tower.jpg];
-    }
-	if(`${medium.photographerId}` === "243"){
-		for(var i=0; i<image.length;i++)
-	image[i] = [Animals_Rainbow.jpg, Event_BenevidesWedding.jpg,  Event_PintoWedding.jpg,  Event_SeassideWedding.jpg, Portrait_Background.jpg,
-        Portrait_Nora.jpg, Portrait_Wednesday.jpg, Travel_HillsideColor.jpg, Travel_Lonesome.jpg];
-	}
-	if(`${medium.photographerId}` == "527"){
-		for(var i=0; i<image.length;i++)
-	image[i] = [Portrait_AfternoonBreak.jpg, Portrait_Alexandra.jpg,  Portrait_Shaw.jpg,  Portrait_Sunkissed.jpg, Travel_Boat_Wanderer.jpg,
-        Travel_Bridge_into_Forest.jpg, Travel_On_the_Road.jpg, Travel_Outdoor_Baths.jpg, Travel_Road_into_Hill.jpg];
-	}
-	if(`${medium.photographerId}` === "925"){
-		for(var i=0; i<image.length;i++)
-	image[i] = [Animals_Majesty.jpg, Event_Emcee.jpg,  Event_keyboardCheck.jpg,  Event_ProductPitch.jpg, Event_VentureConference.jpg,
-        Fashion_Melody_Red_on_Stripes.jpg, Fashion_Wings.jpg, Sport_2000_with_8.jpg, Sport_Butterfly.jpg];
-	}
-	if(`${medium.photographerId}` ===  "925"){
-		for(var i=0; i<image.length;i++)
-	image[i] = [Architecture_Connected_Curves.jpg, Architecture_Cross_Bar.jpg,  Architecture_Horseshoe.jpg,  Architecture_Water_on_Modern.jpg, Architecture_White_Light.jpg,
-        Sport_Jump.jpg, Sport_Next_Hold.jpg, Sport_Race_End.jpg, Sport_Sky_Cross.jpg, sport_water_tunnel.jpg];
-	}
-	return `${image}`;
-	console.log(image);
+    .then(data =>
+{
+    const mediaList = data.media;
+  console.log(mediaList);
+    const photographerList = data.photographers;
+    console.log(photographerList);
+    const photographerIndex = getPhotographer(photographerID, photographerList);
+    const photographerMediaList = getPhotographerMediaList(photographerID, mediaList);
+ //   let orderPopularity = generateOrderList(photographerMediaList, 'popularity');
+  //  const orderDate = generateOrderList(photographerMediaList, 'date');
+ //   const orderName = generateOrderList(photographerMediaList, 'name');
+ //   const gallerySize = photographerMediaList.length;
+ //   selectedOrder = orderPopularity;
+
+ //   generateProfile(photgrapherIndex, photographerList, photographerMediaList);
+ //   generateGallery(photographerMediaList, selectedOrder);
+ //   generateModalMediaClickEvents();
+    console.log(photographerMediaList);
+    // List select to modify the order
+   
+
+    // Utility function to get the data at a specific index
+   
+    // Generation of modal media
+   
+    // Event to move to next media
+   
+ // Generate the click events on the media cards (open modalMedia + like)
+   
+    // Add keyboard events to close the display
+  })   // Also add the use of keyboard arrow keys to do the modalMedia rotation
+   
+  // get the index of the photographer based on his ID number
+  function getPhotographer(ID, photographerList)
+  {
+      let photographIndex;
+      for(var i=0; i<photographerList.length; i++)
+      {
+          if(photographerList[i].id == ID)
+          {
+              photographIndex=i;
+              return i;
+          }
+      }
+  }
+  
+  // get the list of index of the photograph medias based on his ID number
+  function getPhotographerMediaList(ID, baseMediaList)
+  {
+      let mediaList = [];
+      for(var i=0; i<baseMediaList.length;i++)
+      {
+          if(baseMediaList[i].photographerId == ID)
+          {
+              mediaList.push(baseMediaList[i]);
+          }
+      }
+      return mediaList;
+  }
+  
+  // Generate the photographer profil and footer numbers
+  function generateProfile(index, photographerList, photographerMediaList){
+  
+  // code goes here
+     
+  }
+  
+  // generate a new list of index re-arranged based on the order type
+  
+  
+  // Generate the gallery
 }
 
 
-getImage();
 
-// if(medium.photographerId === pid || medium.photographerId === !undefined){
-         //   for (let i = 0; i < medium.image.length; i++) {
-          
-          
-      //  }
-     // }
-    })
-     //.join('');
-    
-    })
 
-    .catch(error =>{
-        console.log(error);
-    })
-  }
 
- fetchPic();
-*/
 
+
+
+
+
+
+
+
+
+
+
+        
 const params = new URL(document.location).searchParams;
 let ID = parseInt(params.get("id"));
 
@@ -111,9 +198,33 @@ function getPhotographerMediaList(ID) {
       const images = [];
       for (let i = 0; i < media.length; i++) {
         //  console.log(media[i]);
-          const img = `<div class="img-set"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' class="img2"></img></a>
+         // const img = `<div class="img-set column"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img></a>
+          const img = `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img>
           <div class="title-set"><span class="title2">${media[i].title}</span>        <span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
-          </div>`  
+          </div>
+          <div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+   
+
+    
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <div class="column">
+    <img src='/assets/images/photographers/${ID}/${media[i].image}' class="image3" />
+    </div>
+   </div>
+   </div>
+`  
           images.push(img)
 
       }
@@ -205,102 +316,15 @@ getImage();
 */
 
 
-
-
-
-
-
-/*
-getPhotographerMediaList(ID, MediaList);
-
-getPhotographerMediaList(82, [
-  Art_Mine.jpg,
-  Art_Purple_lighht.jpg,
-  Art_Triangle_Man.jpg,
-  Event_18thSnniversary.jpg,
-  Event_Sparklers.jpg,
-  Event_WeddingGazebo.jpg,
-  Fashion_Pattern_on_Pattern.jpg,
-  Fasion_Urban_Jungle.jpg,
-  Fashion_Yellow_Beach.jpg,
-]);
-
-getPhotographerMediaList(195, [
-  Architecture_Corner_Room.jpg,
-  Architecture_Dome.jpg,
-  Architecture_On_a_hill.jpg,
-  Architecture_Contrast.jpg,
-  Travel_Adventure_Door.jpg,
-  Travel_Bike_and_Stair.jpg,
-  Travel_OpenMountain.jpg,
-  Travel_OpenMountains.jpg,
-  Travel_SunsetonCanals.jpg,
-  Travel_Tower.jpg,
-]);
-
-getPhotographerMediaList(243, [
-  Animals_Rainbow.jpg,
-  Event_BenevidesWedding.jpg,
-  Event_PintoWedding.jpg,
-  Event_SeassideWedding.jpg,
-  Portrait_Background.jpg,
-  Portrait_Nora.jpg,
-  Portrait_Wednesday.jpg,
-  Travel_HillsideColor.jpg,
-  Travel_Lonesome.jpg,
-]);
-
-getPhotographerMediaList(527, [
-  Portrait_AfternoonBreak.jpg,
-  Portrait_Alexandra.jpg,
-  Portrait_Shaw.jpg,
-  Portrait_Sunkissed.jpg,
-  Travel_Boat_Wanderer.jpg,
-  Travel_Bridge_into_Forest.jpg,
-  Travel_On_the_Road.jpg,
-  Travel_Outdoor_Baths.jpg,
-  Travel_Road_into_Hill.jpg,
-]);
-
-getPhotographerMediaList(925, [
-  Animals_Majesty.jpg,
-  Event_Emcee.jpg,
-  Event_keyboardCheck.jpg,
-  Event_ProductPitch.jpg,
-  Event_VentureConference.jpg,
-  Fashion_Melody_Red_on_Stripes.jpg,
-  Fashion_Wings.jpg,
-  Sport_2000_with_8.jpg,
-  Sport_Butterfly.jpg,
-]);
-
-getPhotographerMediaList(930, [
-  Architecture_Connected_Curves.jpg,
-  Architecture_Cross_Bar.jpg,
-  Architecture_Horseshoe.jpg,
-  Architecture_Water_on_Modern.jpg,
-  Architecture_White_Light.jpg,
-  Sport_Jump.jpg,
-  Sport_Next_Hold.jpg,
-  Sport_Race_End.jpg,
-  Sport_Sky_Cross.jpg,
-  sport_water_tunnel.jpg,
-]);
-*/
-// if(medium.photographerId === pid || medium.photographerId === !undefined){
-
-/*        
-        }
-     // }
-    })
-     //.join('');
-    
-    })
-
-    .catch(error =>{
-        console.log(error);
-    })
+const image3 = document.querySelectorAll('.grid .image3');
+image3.forEach(image =>{
+  image.addEventListener('click', e =>{
+    console.log('clicked');
   }
+  )
+}
+)
 
- fetchPic();
-*/
+
+
+
