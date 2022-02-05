@@ -279,8 +279,8 @@ function getPhotographerMediaList(ID) {
     </div>
    </div>
    </div>
-`  
-          imagess.push(video)
+`    
+          videos.push(video)
           images.push(img)
 
       }
