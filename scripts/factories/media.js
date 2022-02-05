@@ -48,6 +48,9 @@ function showSlides(n) {
   //dots[slideIndex-1].className += " active";
  // captionText.innerHTML = dots[slideIndex-1].alt;
 }
+
+
+
 /*
 function rightMedia(){
 if(media.image == undefined){
@@ -63,7 +66,7 @@ rightMedia();
 
 
 
-
+/*
 const urlParams = new URLSearchParams(window.location.search);
 const photographerID = urlParams.get('id');
 
@@ -79,13 +82,16 @@ function fetchData() {
       return response.json();
     })
     .then(data =>
-{
-    const mediaList = data.media;
-  console.log(mediaList);
+    console.log(data)
+    )
+    const mediaList = data[0].media
+  console.log(mediaList)
     const photographerList = data.photographers;
     console.log(photographerList);
     const photographerIndex = getPhotographer(photographerID, photographerList);
+    console.log(photographerIndex);
     const photographerMediaList = getPhotographerMediaList(photographerID, mediaList);
+    console.log(photographerMediaList);
  //   let orderPopularity = generateOrderList(photographerMediaList, 'popularity');
   //  const orderDate = generateOrderList(photographerMediaList, 'date');
  //   const orderName = generateOrderList(photographerMediaList, 'name');
@@ -108,7 +114,7 @@ function fetchData() {
  // Generate the click events on the media cards (open modalMedia + like)
    
     // Add keyboard events to close the display
-  })   // Also add the use of keyboard arrow keys to do the modalMedia rotation
+  } // Also add the use of keyboard arrow keys to do the modalMedia rotation
    
   // get the index of the photographer based on his ID number
   function getPhotographer(ID, photographerList)
@@ -120,6 +126,7 @@ function fetchData() {
           {
               photographIndex=i;
               return i;
+              console.log(i)
           }
       }
   }
@@ -137,7 +144,7 @@ function fetchData() {
       }
       return mediaList;
   }
-  
+  *//*
   // Generate the photographer profil and footer numbers
   function generateProfile(index, photographerList, photographerMediaList){
   
@@ -149,16 +156,58 @@ function fetchData() {
   
   
   // Generate the gallery
+  // Call the factory constructors to build a mediaCard
+function generateMediaCard(media){
+    let cardObj = new mediaCardPartsFactory("card", media);
+    let descObj = new mediaCardPartsFactory("desc", media);
+   
+    if(media.image == undefined){
+        var mediaObj = new mediaCardPartsFactory("video", media);
+    }
+    else{
+        var mediaObj  = new mediaCardPartsFactory("image", media);
+    }
+    cardObj.mediaCard.appendChild(mediaObj.mediaMedia);
+    cardObj.mediaCard.appendChild(descObj.mediaDesc);
+
+    return cardObj.mediaCard;
 }
 
+// Intermediary between the actual factories classes and the user
+class mediaCardPartsFactory{
+    constructor(type, mediaData){
+        if(type === "card"){
+            return new MediaFactory_card();
+        }
+
+        if(type === "desc"){
+            return new MediaFactory_desc(mediaData);
+        }
+
+        if(type === "video"){
+            return new MediaFactory_video(mediaData);
+        }
+
+        if(type === "image"){
+            return new MediaFactory_image(mediaData);
+        }
+    }
+}
+
+// Various factories used to build a mediaCard
+class MediaFactory_card{
+    constructor(){
+        this.mediaCard = document.createElement("div");
+        this.mediaCard.classList.add("mediaCard");
+    }
+}
+
+*/
 
 
 
 
-
-
-
-
+ 
 
 
 
@@ -194,14 +243,20 @@ function getPhotographerMediaList(ID) {
     })
     .then((media) => {
 
-      
+      const videos = [];
       const images = [];
       for (let i = 0; i < media.length; i++) {
         //  console.log(media[i]);
          // const img = `<div class="img-set column"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img></a>
           const img = `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img>
           <div class="title-set"><span class="title2">${media[i].title}</span>        <span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
+          </div>`
+          const video = `<div class="video-set"><video src='/assets/images/photographers/${ID}/${media[i].video}'></video>
+          <div class="title-set"><span class="likes">${media[i].likes}<i class="fa-solid fa-heart"></i></span></div>  
           </div>
+         
+
+
           <div id="myModal" class="modal">
   <span class="close cursor" onclick="closeModal()">&times;</span>
   <div class="modal-content">
@@ -225,11 +280,12 @@ function getPhotographerMediaList(ID) {
    </div>
    </div>
 `  
+          imagess.push(video)
           images.push(img)
 
       }
+      document.querySelector(".grid").innerHTML = videos.join('\n');
       document.querySelector(".grid").innerHTML = images.join('\n');
-  
   
     });
 }
@@ -315,7 +371,7 @@ function getImage(){
 getImage();
 */
 
-
+/*
 const image3 = document.querySelectorAll('.grid .image3');
 image3.forEach(image =>{
   image.addEventListener('click', e =>{
@@ -326,5 +382,5 @@ image3.forEach(image =>{
 )
 
 
-
+*/
 
