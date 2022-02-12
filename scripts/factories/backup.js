@@ -1,9 +1,30 @@
-
-
-  function getImageContent(mediaData){
-    return `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${mediaData.image}' onclick="openModal();currentSlide(${mediaData.id});clicked()" class="hover-shadow cursor image3" id="myImg"></img>
-    <div class="title-set"><span class="title2">${mediaData.title}</span>         <button id="likes">${mediaData.likes}<i class="fa-solid fa-heart"></i></button></div>  
+function getImageContent(mediaData){
+    return `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${mediaData.image}' onclick="openModal();currentSlide(${ID})" class="hover-shadow cursor image3" id="myImg"></img>
+    <div class="title-set"><span class="title2">${mediaData.title}</span>        <span class="likes">${mediaData.likes}<i class="fa-solid fa-heart"></i></span></div>  
     </div>
+    
+    <div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+    
+     
+    
+      
+      
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    
+    
+    
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+    
+      <div id="unique-${mediaData.id}"  class=" column">
+      <img src='/assets/images/photographers/${ID}/${mediaData.image}' class="image3" />
+      </div>
+     </div>
+     </div>
     `    
   }
 
@@ -78,8 +99,6 @@ function getPhotographerMediaList(ID) {
     .then((media) => {
        let media_values = '';
       const media_content = [];
-      let media_detail ="";
-      const media_detail_list = []
       for (let i = 0; i < media.length; i++) {
         //  console.log(media[i]);
          // const img = `<div class="img-set column"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img></a>
@@ -87,12 +106,7 @@ function getPhotographerMediaList(ID) {
           factoryInstance = new mediaCardPartsFactory("image", media[i])
           console.log(factoryInstance)
           media_values = factoryInstance.content
-
-          media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-          <img src='/assets/images/photographers/${ID}/${media[i].image}' class="image3" />
-          </div>
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>`
+          console.log(factoryInstance.content);
          }
         if(media[i].video){
           factoryInstance = new mediaCardPartsFactory("video", media[i])
@@ -100,11 +114,9 @@ function getPhotographerMediaList(ID) {
          }
           
          media_content.push(media_values)
-         media_detail_list.push(media_detail)
 
       }
       document.querySelector(".grid").innerHTML = media_content.join('\n');
-      document.querySelector(".modal-content").innerHTML = media_detail_list.join('\n');
     
   
     });
@@ -134,42 +146,35 @@ img.onclick = function(){
   modalImg.src = this.src;
 }
 */
-const buttonElement = document.getElementById('likes') 
-buttonElement.addEventListener('click', function (event) { 
-    media[i].likes.value++
-    });    
-     console.log(buttonElement)
 
 
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
 
-function currentSlide(n) {
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
+
+// function currentSlide(n) {
  
-  showSlides(slideIndex = n);
-
-}
-function clicked() {
-  console.log('clicked');
-}
-
+//   showSlides(slideIndex = n);
+// }
 
 function showSlides(n) {
  
   var i;
+  
   var individual_id;
-  var slides = document.getElementsByClassName("myslides");
-
- // var captionText = document.getElementById("caption");
-  // if (n > slides.length) {slideIndex = 1}
-  // if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-}
+  var slides = document.getElementsByClassName("column");
   var unique_id = "unique-"+n
   var individual_id = document.getElementById(unique_id);
+
+  console.log("apna",individual_id)
+ // var captionText = document.getElementById("caption");
+  // if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "block";
+  }
   individual_id.style.display = "block";
 
  // slides[slideIndex-1].style.display = "block";
@@ -206,11 +211,14 @@ function showSlides(n) {
 // } )
 
 
-
-
-
-
-
-
-
+/*
+const image3 = document.querySelectorAll('.grid .image3');
+image3.forEach(image =>{
+  image.addEventListener('click', e =>{
+    console.log('clicked');
+  }
+  )
+}
+)
+*/
 
