@@ -2,14 +2,14 @@
 
   function getImageContent(mediaData){
     return `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${mediaData.image}' onclick="openModal();currentSlide(${mediaData.id});clicked()" class="hover-shadow cursor image3" id="myImg"></img>
-    <div class="title-set"><span class="title2">${mediaData.title}</span>         <button id="likes">${mediaData.likes}<i class="fa-solid fa-heart"></i></button></div>  
+    <div class="title-set"><span class="title2">${mediaData.title}</span>        <button class="likes" id = ${mediaData.id} onclick= increaseLike(${mediaData.id}) >${mediaData.likes}<i class="fa-solid fa-heart"></i></button></div>  
     </div>
     `    
   }
 
   function getVideoContent(mediaData){
-  return  `<div class="video-set"><video src='/assets/images/photographers/${ID}/${mediaData.video}'></video>
-  <div class="title-set"><span class="likes">${mediaData.likes}<i class="fa-solid fa-heart"></i></span></div>  
+  return  `<div class="video-set"><video src='/assets/images/photographers/${ID}/${mediaData.video} width="300px" height="300px"'></video>
+  <div class="title-set"> <button class="likes" id = ${mediaData.id} onclick= increaseLike(${mediaData.id}) >${mediaData.likes}<i class="fa-solid fa-heart"></i></div>  
   </div>
   
   <div id="myModal" class="modal">
@@ -40,11 +40,11 @@
   class mediaCardPartsFactory{
     constructor(type, mediaData){
       if(type === "image"){
-        console.log(type.mediaData)
+   
         this.content = getImageContent(mediaData)
       }
       if(type === "video"){
-        console.log(type, mediaData)
+        
         this.content = getVideoContent(mediaData)
       }
     }
@@ -63,16 +63,16 @@ function getPhotographerMediaList(ID) {
     })
     .then((data) => {
       const media = data.media;
-      console.log(media);
+
       let newmediaList = [];
 
       for (var i = 0; i < media.length; i++) {
         if (media[i].photographerId == ID) {
           newmediaList.push(media[i]);
-          console.log(media[i]);
+       
         }
       }
-      console.log(newmediaList)
+   
       return newmediaList;
     })
     .then((media) => {
@@ -80,19 +80,39 @@ function getPhotographerMediaList(ID) {
       const media_content = [];
       let media_detail ="";
       const media_detail_list = []
+      media_dropdown = '';
       for (let i = 0; i < media.length; i++) {
         //  console.log(media[i]);
          // const img = `<div class="img-set column"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img></a>
          if(media[i].image){
           factoryInstance = new mediaCardPartsFactory("image", media[i])
-          console.log(factoryInstance)
           media_values = factoryInstance.content
 
+         /* media_dropdown = `<div class="drop-dowm-menu">
+          <div class="order">
+            Order By</div>
+          <div class="menu">
+            <div onClick="sortLikes()" class="menu-title">
+              Popularity<i class="fas fa-angle-up icon1"></i><i class="fas fa-angle-down icon4"></i>
+            </div>
+            <div class="sub-menu">
+              <ul>
+                <li>
+                  <a href="#"><span onclick="sortDate()"class="date">Date</span></a>
+                </li>
+                <li>
+                  <a href="#"><span onclick="sortTitle()"class="title">Title</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>`*/
+        
           media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
           <img src='/assets/images/photographers/${ID}/${media[i].image}' class="image3" />
           </div>
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>`
+          <a class="prev" onclick="plusSlides(-1,${ID})">&#10094;</a>
+          <a class="next" onclick="plusSlides(1,${ID})">&#10095;</a>`
          }
         if(media[i].video){
           factoryInstance = new mediaCardPartsFactory("video", media[i])
@@ -103,6 +123,7 @@ function getPhotographerMediaList(ID) {
          media_detail_list.push(media_detail)
 
       }
+     // document.querySelector(".dropdown").innerHTML = media_dropdown.join('\n');
       document.querySelector(".grid").innerHTML = media_content.join('\n');
       document.querySelector(".modal-content").innerHTML = media_detail_list.join('\n');
     
@@ -110,6 +131,8 @@ function getPhotographerMediaList(ID) {
     });
 }
 getPhotographerMediaList(ID);
+
+
 
 
 function openModal() {
@@ -134,17 +157,38 @@ img.onclick = function(){
   modalImg.src = this.src;
 }
 */
-const buttonElement = document.getElementById('likes') 
-buttonElement.addEventListener('click', function (event) { 
-    media[i].likes.value++
-    });    
-     console.log(buttonElement)
 
 
+function plusSlides(n,ID) {
+ 
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+  fetch(`/data/photographers.json`)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("ERROR");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const media = data.media;
+      let newmediaList = [];
+      
+      for (var i = 0; i < media.length; i++) {
+        if (media[i].photographerId == ID) {
+          newmediaList.push(media[i]);
+        }
+      }
+    
+      return newmediaList;
+    })
+    .then((media) => {
+      x = Math.floor(Math.random() * (media.length-2));
+    // for (let x = 0; x < media.length; x++) {
+      showSlides(media[x].id)
+    }
+    )
+  //  showSlides(slideIndex += n);
+  }
 
 function currentSlide(n) {
  
@@ -168,6 +212,7 @@ function showSlides(n) {
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
 }
+console.log(n)
   var unique_id = "unique-"+n
   var individual_id = document.getElementById(unique_id);
   individual_id.style.display = "block";
@@ -205,7 +250,21 @@ function showSlides(n) {
 //   lightbox.classList.remove('active')
 // } )
 
+function increaseLike(id){
+  button = document.getElementById(id)
+  button.innerText = parseInt(button.innerText)+1 
+  button.innerHTML = button.innerHTML+ `<i class="fa-solid fa-heart"></i>`
+}
 
+function sortLikes(a, b){
+  return parseInt(a.MediaData.likes) - parseInt(b.MediaData.likes);
+}
+function sortDate(a, b){
+  return new Date(a.MediaData.date).valueOf() - new Date(b.MediaData.date).valueOf()
+}
+function sortTitle(a, b){
+  return a.MediaData.title - b.Mediadata.title
+}
 
 
 

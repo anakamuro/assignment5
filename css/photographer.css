@@ -155,10 +155,12 @@ form input {
         width: 150px;
         margin-bottom: 5px;
         padding-bottom: 10px;
+        position: relative;
+        left: -2px;
       }
       
       .sub-menu {
-        display: none;
+        display: inline;
         position: absolute;
         top: 50px;
         left: 0px;
@@ -197,7 +199,6 @@ form input {
         justify-content: flex-start;
       }
       .sub-menu li:first-child::after {
-        content: "";
         height: 70px;
         display: block;
         position: relative;
@@ -215,7 +216,7 @@ form input {
         left: 0px;
         width: 180px;
         margin-left: 0px;
-        margin-bottom: 5px;
+        margin-bottom: 0px;
         padding-bottom: 10px;
       }
       .date::after {
@@ -234,7 +235,7 @@ form input {
         display: flex;
         justify-content: space-around;
         position: relative;
-        top: -20px;
+        top: -15px;
         left: -60px;
         width: 150px;
         margin-bottom: 5px;
@@ -256,6 +257,12 @@ form input {
         top: 100px;
         list-style: none;
         padding-top: 50px;
+      }
+      /*
+      button.pop, button.date, button.title{
+        width: 100px;
+        background-color: #8e1d1c;
+        color: white;
       }
       /*
       .icon2 {

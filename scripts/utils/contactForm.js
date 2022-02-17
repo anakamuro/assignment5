@@ -4,6 +4,6 @@ function displayModal() {
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
+    const modal = document.getElementById("myModal");
     modal.style.display = "none";
 }
