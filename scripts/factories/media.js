@@ -6,8 +6,8 @@ function getImageContent(mediaData){
 }
 
 function getVideoContent(mediaData){
-return  `<div class="video-set"><video src='/assets/images/photographers/${ID}/${mediaData.video} width="300px" height="300px"'></video>
-<div class="title-set"> <button class="likes" id = ${mediaData.id} onclick= increaseLike(${mediaData.id}) >${mediaData.likes}<i class="fa-solid fa-heart"></i></div>  
+return  `<div class="video-set"><video src='/assets/images/photographers/${ID}/${mediaData.video}' width="300px" height="300px"'></video>
+<div class="title-set"><span class="title2">${mediaData.title}</span>  <button class="likes" id = ${mediaData.id} onclick= increaseLike(${mediaData.id}) >${mediaData.likes}<i class="fa-solid fa-heart"></i></div>  
 </div>
 
 <div id="myModal" class="modal">
@@ -117,7 +117,10 @@ fetch(`/data/photographers.json`)
         media_values = factoryInstance.content
 
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <video src='/assets/images/photographers/${ID}/${media[i].video}' class="image3" />
+        <video src='/assets/images/photographers/${ID}/${media[i].video}' class="image3" style="
+        height: 300px;
+        width: 300px;
+    " />
         </div>
         <a class="prev" onclick="plusSlides(-1,${ID})">&#10094;</a>
         <a class="next" onclick="plusSlides(1,${ID})">&#10095;</a>`
@@ -186,7 +189,7 @@ fetch(`/data/photographers.json`)
     return newmediaList;
   })
   .then((media) => {
-    x = Math.floor(Math.random() * (media.length-2));
+    x = Math.floor(Math.random() * (media.length-1));
   // for (let x = 0; x < media.length; x++) {
     showSlides(media[x].id)
   }
@@ -345,7 +348,10 @@ let media_values = '';
         media_values = factoryInstance.content
 
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <video src='/assets/images/photographers/${ID}/${media[i].video}' class="image3" />
+        <video src='/assets/images/photographers/${ID}/${media[i].video}' class="image3" style="
+        height: 300px;
+        width: 300px;
+    " />
         </div>
         <a class="prev" onclick="plusSlides(-1,${ID})">&#10094;</a>
         <a class="next" onclick="plusSlides(1,${ID})">&#10095;</a>`
@@ -359,8 +365,3 @@ let media_values = '';
     document.querySelector(".modal-content").innerHTML = media_detail_list.join('\n');
   
 }
-
-
-
-
-
