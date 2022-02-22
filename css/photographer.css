@@ -556,7 +556,13 @@ form input {
       }
       
      
+     /*added
 
+     .prevImage.inActive, 
+     .nextImage.inActive {
+       opacity: 1
+     }
+     */
 
 
 

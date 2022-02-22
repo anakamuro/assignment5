@@ -1,12 +1,12 @@
 function getImageContent(mediaData){
-  return `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${mediaData.image}' onclick="openModal();currentSlide(${mediaData.id});clicked()" class="hover-shadow cursor image3" id="myImg"></img>
+  return `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${mediaData.image}' onclick="openModal();currentSlide(${mediaData.id});clicked()" alt=${media[i].title} class="hover-shadow cursor image3" id="myImg"></img>
   <div class="title-set"><span class="title2">${mediaData.title}</span>        <button class="likes" id = ${mediaData.id} onclick= increaseLike(${mediaData.id}) >${mediaData.likes}<i class="fa-solid fa-heart"></i></button></div>  
   </div>
   `    
 }
 
 function getVideoContent(mediaData){
-return  `<div class="video-set"><video src='/assets/images/photographers/${ID}/${mediaData.video}' width="300px" height="300px"'></video>
+return  `<div class="video-set"><video src='/assets/images/photographers/${ID}/${mediaData.video}' alt=${media[i].title} width="300px" height="300px"'></video>
 <div class="title-set"><span class="title2">${mediaData.title}</span>  <button class="likes" id = ${mediaData.id} onclick= increaseLike(${mediaData.id}) >${mediaData.likes}<i class="fa-solid fa-heart"></i></div>  
 </div>
 
@@ -107,7 +107,7 @@ fetch(`/data/photographers.json`)
       </div>`*/
       
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <img src='/assets/images/photographers/${ID}/${media[i].image}' class="image3" />
+        <img src='/assets/images/photographers/${ID}/${media[i].image}' alt=${media[i].title} class="image3"/>
         </div>
         <a class="prev" onclick="plusSlides(-1,${ID})">&#10094;</a>
         <a class="next" onclick="plusSlides(1,${ID})">&#10095;</a>`
@@ -117,7 +117,7 @@ fetch(`/data/photographers.json`)
         media_values = factoryInstance.content
 
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <video src='/assets/images/photographers/${ID}/${media[i].video}' class="image3" style="
+        <video src='/assets/images/photographers/${ID}/${media[i].video}' alt=${media[i].title} class="image3" style="
         height: 300px;
         width: 300px;
     " />
@@ -338,7 +338,7 @@ let media_values = '';
         media_values = factoryInstance.content
 
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <img src='/assets/images/photographers/${ID}/${media[i].image}' class="image3" />
+        <img src='/assets/images/photographers/${ID}/${media[i].image}' class="image3" alt=${media[i].title}/>
         </div>
         <a class="prev" onclick="plusSlides(-1,${ID})">&#10094;</a>
         <a class="next" onclick="plusSlides(1,${ID})">&#10095;</a>`
@@ -348,7 +348,7 @@ let media_values = '';
         media_values = factoryInstance.content
 
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <video src='/assets/images/photographers/${ID}/${media[i].video}' class="image3" style="
+        <video src='/assets/images/photographers/${ID}/${media[i].video}' alt=${media[i].title} class="image3" style="
         height: 300px;
         width: 300px;
     " />
@@ -365,3 +365,66 @@ let media_values = '';
     document.querySelector(".modal-content").innerHTML = media_detail_list.join('\n');
   
 }
+
+function increaseLike(id){
+  button = document.getElementById(id)
+  button.innerText = parseInt(button.innerText)+1 
+  button.innerHTML = button.innerHTML+ `<i class="fa-solid fa-heart"></i>`
+}
+
+/*
+window.addEventListener('keyup', function(e){
+  if(e.key === "LeftArrow" || e.key === 'left'){
+
+  }
+  else if(e.key === "RightArrow" || e.key === 'right'){
+
+}
+})
+
+const imageTotalNumber = `${media[i].length}`;
+let currentSlideNumber = 1;
+
+prevImageElement.addEventlisener('click', () => {
+  if (currentSlideNumber !== 1){
+     currentSlideNumber--
+     mainImageElement.setAttribute('src', `img/img${currentSlideNumber}.jpg`)
+     changeSlidesStatus()
+  }
+})
+
+nextImageElement.addEventlisener('click', () => {
+  if (currentSlideNumber !== imageTotalNumber){
+     currentSlideNumber++
+     mainImageElement.setAttribute('src', `img/img${currentSlideNumber}.jpg`)
+     changeSlidesStatus()
+  }
+})
+
+function changeSlidesStatus(){
+  if(currentSlideNumber === 1){
+    prevImageElement.classList.add('inActive')
+  } else {
+    prevImageElement.classList.remove('inActive')
+  }
+  if(currentSlideNumber === imageTotalNumber){
+    nextImageElement.classList.add('inActive')
+  } else {
+    nextImageElement.classList.remove('inActive')
+  }
+}
+
+changeSlideStastus();
+
+for(i = 0; i < imageTotalNumber; i++){
+  const liElement = document.createElement('li')
+  liElement.style.backgroundImage = `url(img/img${i + 1}.jpg)`
+
+liElement.addEventListenerr('click', ()=> {
+  liElement.setAtttribute('src', `img/img${i + 1}.jpg`)
+  currentSlideNumber = i + 1
+  changeSlideStatus()
+})
+  imageListElement.appendChild(liElement)
+}
+*/
