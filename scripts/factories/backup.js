@@ -158,8 +158,6 @@ img.onclick = function(){
 
 
 function plusSlides(n,ID) {
- 
-
   fetch(`/data/photographers.json`)
     .then((response) => {
       if (!response.ok) {
