@@ -125,7 +125,7 @@ form input {
     border-radius: 5px;
 }
 
-    .drop-dowm-menu{
+    #drop-dowm-menu{
         display: flex;
         flex-direction: row;
         gap: 30px;

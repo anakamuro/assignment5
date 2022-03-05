@@ -9,7 +9,7 @@ const modalDisplay = document.getElementById("contact_modal");
 //const modalA = document.querySelector(".modalA");
 const photographSection = document.querySelector("div#grid.photograph_section.grid");
 const closeButton = getElementById("closeModal");
-const dropDownMenu = document.querySelector(".drop-dowm-menu")
+const dropDownMenu = document.getElementById("drop-dowm-menu")
 /*
 contactButton.addEventListener('click', function(){
     modalDisplay.style.display = "block";
@@ -41,6 +41,10 @@ function closeModal() {
     dropDownMenu.style.display = "block";
 }
 
+function redirect(){
+    window.location.href="index.html";
+  }
+
 var form = document.getElementById('form');
 
 form.addEventListener('submit', function(event){
@@ -57,5 +61,5 @@ form.addEventListener('submit', function(event){
 
     var message = document.getElementById('message').value
     console.log(message)
-    
+    form.style.display = block;
 })

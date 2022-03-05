@@ -143,6 +143,8 @@ modalImg.src = this.src;
 */
 
 var count = 0
+var prevButton = document.querySelector('.prev');
+var nextButton = document.querySelector('.next');
 function plusSlides(n,ID) {
 
   getPhotoContent.then((data) => {
@@ -158,10 +160,40 @@ function plusSlides(n,ID) {
     return newmediaList;
   })
   .then((media) => {
+    var x = imgCount;
+    console.log("image count",imgCount)
+    if (prevButton) {
+    //  prevButton.addEventListener("click", function() {
+      if (x < media.length+1 && x>=1) {
+       imgCount = imgCount - 1;
+       showSlides(media[x].id)
+   } else {
+     x = media.length - 1
+     imgCount = media.length - 1
+     showSlides(media[x].id) 
+   }
+ } else {
+   if (x >= media.length) {
+     showSlides(media[0].id)
+     imgCount = 0
+     x = 0
+   } else {
+     showSlides(media[x].id)
+     imgCount = imgCount + 1;  
+   }
+ }
+ // x = count
+ //x = Math.floor(Math.random() * (media.length-1));
+ // for (let x = 0; x < media.length; x++) {
+ //showSlides(media[x].id)
+ //count = count + 1;
+ //console.log(count)
+ 
+ 
    // x = count
-    x = Math.floor(Math.random() * (media.length-1));
+  //  x = Math.floor(Math.random() * (media.length-1));
   // for (let x = 0; x < media.length; x++) {
-   showSlides(media[x].id)
+  // showSlides(media[x].id)
     //count = count + 1;
    console.log(count)
   }
@@ -384,6 +416,27 @@ window.addEventListener('keyup', (e) => {
 //console.log(count)
 })
 })
+// dropdown menu 
+var x = buttonCount;
+   console.log("image count",imgCount)
+   if (e.key === "ArrowUp" || e.key === 'up') {
+     if (x < button.length+1 && x>=1) {
+      buttonCount = buttonCount - 1;
+  } else {
+    x = button.length - 1
+    buttonCount = button.length - 1
+    showSlides(media[x].id) 
+  }
+} else {
+  if (x >= button.length) {
+    buttonCount = 0
+    x = 0
+  } else {
+    buttonCount = buttonCount + 1;  
+  }
+}
+
+
 
 
 /*
