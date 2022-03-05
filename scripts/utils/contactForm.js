@@ -1,9 +1,61 @@
+/*
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
+}*/
+
+var contactButton = document.getElementById("contact_button");
+const modalDisplay = document.getElementById("contact_modal");
+//const modalA = document.querySelector(".modalA");
+const photographSection = document.querySelector("div#grid.photograph_section.grid");
+const closeButton = getElementById("closeModal");
+const dropDownMenu = document.querySelector(".drop-dowm-menu")
+/*
+contactButton.addEventListener('click', function(){
+    modalDisplay.style.display = "block";
+    modalA.style.display = "block";
+    photographSection.style.display = "none";
+})
+*/
+
+function displayModal() {
+   modalDisplay.style.display = "block";
+   //modalA.style.display = "none";
+   photographSection.style.display = "none";
+   dropDownMenu.style.display = "none";
 }
 
-function closeModal() {
+
+contactButton.addEventListener("click", displayModal);
+closeButton.addEventListener("click", closeModal);
+
+function stopModal() {
     const modal = document.getElementById("myModal");
     modal.style.display = "none";
 }
+
+function closeModal() {
+    modalDisplay.style.display = "none";
+    //modalA.style.display = "none";
+    photographSection.style.display = "block";
+    dropDownMenu.style.display = "block";
+}
+
+var form = document.getElementById('form');
+
+form.addEventListener('submit', function(event){
+    event.preventDefault()
+
+    var firstName = document.getElementById('firstName').value
+    console.log(firstName)
+
+    var lastName = document.getElementById('lastName').value
+    console.log(lastName)
+
+    var email = document.getElementById('email').value
+    console.log(email)
+
+    var message = document.getElementById('message').value
+    console.log(message)
+    
+})

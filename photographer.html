@@ -16,23 +16,23 @@
   </head>
   
   <body>
-    <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+    <header role="banner">
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo"/></a>
     </header>
     <main id="main">
       
       <div class="photograph-header">
         <div class="info"></div>
-        <button class="contact_button" onclick="displayModal()"><pre>Contact Me</pre></button>
+        <button id="contact_button" class="contact_button"><pre>Contact Me</pre></button>
       <div class="photo_section"></div>
     </div>
     </main>
-    <div class="drop-dowm-menu">
+    <div class="drop-dowm-menu" aria-expanded="true">
       <div class="order">
         Order By</div>
       <div class="menu">
         <div onClick="sortData('popularity')" class="menu-title">
-          Popularity<i class="fas fa-angle-up icon1"></i><i class="fas fa-angle-down icon4"></i>
+          Popularity<i class="fas fa-angle-up icon1" aria-hidden="true"></i><i class="fas fa-angle-down icon4" aria-hidden="true"></i>
         </div>
         <div class="sub-menu">
           <ul>
@@ -46,29 +46,35 @@
         </div>
       </div>
     </div>
-    <div class="photograph_section grid">
+    <div id="grid" class="photograph_section grid">
       <div id="lightbox"></div>
       <div id="myModal" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <span class="close cursor" onclick="stopModal()">&times;</span>
         <div class="modal-content">
 
          </div>
          </div>
     </div>
 
-    <div class="video_section"></div>
-    <div id="contact_modal">
-			<div class="modal">
+   
+    <div id="contact_modal" role="dialog" aria-modal="false">
+			<div class="modalA">
 				<header>
           <h2>Contact me</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" id="closeModal" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>First name</label>
-						<input />
+				<form id="form">
+					<div role="group" aria-labelledby="contact information">
+						<label for="first name">First Name</label>
+						<input type="text" class="form-control" name="first name" id="firstName" placeholder="First Name" required aria-describedby="feedback-message"/>
+            <label for="last name">Last Name</label>
+						<input type="text" class="form-control" name="last name" id="lastName"  placeholder="Last Name"required aria-describedby="feedback-message"/>
+            <label for="email">Email</label>
+						<input type="email" class="form-control" name="email" id="email" placeholder="email" required aria-describedby="feedback-message"/>
+            <label for="message">Message</label>
+						<textarea cols="30" rows="10" type="text" class="form-control" name="message" id="message" placeholder="message"></textarea>
 					</div>
-          <button class="contact_button">Send</button>
+          <button class="contact_button" type="submit">Send</button>
 				</form>
 			</div>
 		</div>

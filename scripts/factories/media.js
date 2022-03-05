@@ -1,30 +1,8 @@
-async function getPhotographers() {
-  // TODO : Replace with data from the JSON file
- return await(await fetch("/data/photographers.json")).json();
-}
-
-getPhotographers() 
-
-/*
-async function fetchJSON(){
-  const response = await fetch(`/data/photographers.json`)
-  if(response.OK){
-    const json =  response.json();
-    return json;
-  }
-}
-
-fetchJSON()
-/*
-async function init(){
-  const users = await fetchData()
-  for(const user of users){
-    console.log('I am ${user.name}, ${user.age} years old')
-  }
-}
-init()
-*/
-
+const getPhotoContent = fetch(`/data/photographers.json`)
+  .then((response) => response.json())
+  .then((data) => {
+    return data;
+  });
 
 function getImageContent(mediaData){
   return `<div class="img-set column"><img src='/assets/images/photographers/${ID}/${mediaData.image}' onclick="openModal();currentSlide(${mediaData.id});clicked()" alt=${mediaData.title} class="hover-shadow cursor image3" id="myImg"></img>
@@ -34,11 +12,11 @@ function getImageContent(mediaData){
 }
 
 function getVideoContent(mediaData){
-return  `<div class="video-set"><video src='/assets/images/photographers/${ID}/${mediaData.video}' alt=${mediaData.title} width="300px" height="300px"'></video>
+return  `<div class="video-set"><video controls src='/assets/images/photographers/${ID}/${mediaData.video}' alt=${mediaData.title} width="300px" height="300px"'></video>
 <div class="title-set"><span class="title2">${mediaData.title}</span>  <button class="likes" id = ${mediaData.id} onclick= increaseLike(${mediaData.id}) >${mediaData.likes}<i class="fa-solid fa-heart"></i></div>  
 </div>
-<div id="myModal" class="modal">
-<span class="close cursor" onclick="closeModal()">&times;</span>
+<div id="myModal" class="modal" aria-hidden="true" role="dialog">
+<span class="close cursor" onclick="stopModal()">&times;</span>
 <div class="modal-content">
  
   
@@ -76,13 +54,8 @@ let ID = parseInt(params.get("id"));
 function getPhotographerMediaList(ID) {
  // fetchJSON()
 fetch(`/data/photographers.json`)
-  .then((response) => {
-    if (!response.ok) {
-      throw Error("ERROR");
-    }
-    return response.json();
-  })
-  .then((data) => {
+  
+  getPhotoContent.then((data) => {
     const media = data.media;
     let newmediaList = [];
 
@@ -119,7 +92,7 @@ fetch(`/data/photographers.json`)
         media_values = factoryInstance.content
 
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <video src='/assets/images/photographers/${ID}/${media[i].video}' alt=${media[i].title} class="image3" style="
+        <video controls src='/assets/images/photographers/${ID}/${media[i].video}' alt=${media[i].title} class="image3" style="
         height: 300px;
         width: 300px;
     " />
@@ -147,11 +120,13 @@ getPhotographerMediaList(ID);
 function openModal() {
 document.getElementById("myModal").style.display = "block";
 document.querySelector(".title-set").style.display = "none";
+document.querySelector(".drop-dowm-menu").style.display = "none";
 }
 
-function closeModal() {
+function stopModal() {
 document.getElementById("myModal").style.display = "none";
 document.querySelector(".title-set").style.display = "block";
+document.querySelector(".drop-dowm-menu").style.display = "block";
 }
 
 
@@ -170,15 +145,7 @@ modalImg.src = this.src;
 var count = 0
 function plusSlides(n,ID) {
 
- 
-fetch(`/data/photographers.json`)
-  .then((response) => {
-    if (!response.ok) {
-      throw Error("ERROR");
-    }
-    return response.json();
-  })
-  .then((data) => {
+  getPhotoContent.then((data) => {
     const media = data.media;
     let newmediaList = [];
     
@@ -276,14 +243,8 @@ if (parameter == "name"){
 
 
 function jsonResponse(parameter){
-fetch(`/data/photographers.json`)
-.then((response) => {
-  if (!response.ok) {
-    throw Error("ERROR");
-  }
-  return response.json();
-})
-.then((data) => {
+
+    getPhotoContent.then((data) => {
   const media = data.media;
   let newmediaList = [];
   
@@ -353,7 +314,7 @@ let media_values = '';
         media_values = factoryInstance.content
 
         media_detail = `<div id="unique-${media[i].id}"  class="myslides column">
-        <video src='/assets/images/photographers/${ID}/${media[i].video}' alt=${media[i].title} class="image3" style="
+        <video controls src='/assets/images/photographers/${ID}/${media[i].video}' alt=${media[i].title} class="image3" style="
         height: 300px;
         width: 300px;
     " />
@@ -377,16 +338,11 @@ function increaseLike(id){
   button.innerHTML = button.innerHTML+ `<i class="fa-solid fa-heart"></i>`
 }
 
+
 var imgCount = 0
 window.addEventListener('keyup', (e) => {
-  fetch(`/data/photographers.json`)
-  .then((response) => {
-    if (!response.ok) {
-      throw Error("ERROR");
-    }
-    return response.json();
-  })
-  .then((data) => {
+
+  getPhotoContent.then((data) => {
     const media = data.media;
     let newmediaList = [];
     
@@ -399,32 +355,38 @@ window.addEventListener('keyup', (e) => {
     return newmediaList;
   })
   .then((media) => {
-    var x = imgCount
-    if (e.key === "ArrowLeft" || e.key === 'left') {
-      if (x < media[0].id) {
-        showSlides(media[0].id)
-      } else {
-        showSlides(media[x].id)
-        imgCount = imgCount - 1;
-      }
-    } else {
-      if (x > media.length) {
-        showSlides(media[0].id)
-      } else {
-        showSlides(media[x].id)
-        imgCount = imgCount + 1;  
-      }
-    }
-   // x = count
-    //x = Math.floor(Math.random() * (media.length-1));
-  // for (let x = 0; x < media.length; x++) {
-   //showSlides(media[x].id)
-    //count = count + 1;
-   //console.log(count)
-  })
+   var x = imgCount;
+   console.log("image count",imgCount)
+   if (e.key === "ArrowLeft" || e.key === 'left') {
+     if (x < media.length+1 && x>=1) {
+      imgCount = imgCount - 1;
+      showSlides(media[x].id)
+  } else {
+    x = media.length - 1
+    imgCount = media.length - 1
+    showSlides(media[x].id) 
+  }
+} else {
+  if (x >= media.length) {
+    showSlides(media[0].id)
+    imgCount = 0
+    x = 0
+  } else {
+    showSlides(media[x].id)
+    imgCount = imgCount + 1;  
+  }
+}
+// x = count
+//x = Math.floor(Math.random() * (media.length-1));
+// for (let x = 0; x < media.length; x++) {
+//showSlides(media[x].id)
+//count = count + 1;
+//console.log(count)
+})
 })
 
 
+/*
 const imageTotalNumber = `${media[i].length}`;
 let currentSlideNumber = 1;
 prevImageElement.addEventlisener('click', () => {
@@ -464,3 +426,4 @@ liElement.addEventListenerr('click', ()=> {
 })
   imageListElement.appendChild(liElement)
 }
+*/

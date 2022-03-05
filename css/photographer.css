@@ -1,6 +1,9 @@
 #contact_modal {
     display: none;
 }
+.show{
+  display: block;
+}
 /*
 header a img {
   height: 50px;
@@ -20,10 +23,12 @@ header a img {
 }
 .photograph_section {
   display: flex;
-  flex-direction: row;
+  width: 1500px;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 100px;
+  margin: 30px;
 }
 .photograph_section img {
     height: 300px;
@@ -64,7 +69,8 @@ img.logo {
     cursor: pointer;
 }
 
-.modal {
+.modalA {
+    display: none;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -114,6 +120,7 @@ form div {
 form input {
     width: 100%;
     height: 68px;
+    font-size: 32px;
     border: none;
     border-radius: 5px;
 }
@@ -177,7 +184,7 @@ form input {
         color: white;
       }
       
-      .sub-menu ul li {
+      .sub-menu ul li{
         list-style: none;
         display: flex;
         align-items: center;
@@ -293,12 +300,10 @@ form input {
       }
 
       .img-set {
-        display: flex;
-        flex-direction: column;
+        display: inline-block;;
       }
       .video-set {
-        display: flex;
-        flex-direction: column;
+        display: inline-block;
       }
       .title2 {
         display: inline;
@@ -350,10 +355,12 @@ form input {
       .grid {
         display: grid;
         grid-template-columns: repeat(3, 300px);
+        grid-template-rows: 300px 300px 300px;
         justify-content: center;
         align-items: center;
         grid-gap: 400px 50px;
         height: 100vh;
+        width: 1200px;
       }
       .grid img {
         width: 300px;
@@ -434,7 +441,10 @@ form input {
       }
       
       .column {
-        width: 100%;
+        display: inline-block;
+        flex-wrap: wrap;
+        width: 300px;
+        margin: 45px;
         height: 100%;
       }
       
