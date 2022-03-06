@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -16,31 +16,31 @@
   </head>
   
   <body>
-    <header role="banner">
+    <header>
       <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="logo"/></a>
     </header>
     <main id="main">
       
       <div class="photograph-header">
         <div class="info"></div>
-        <button id="contact_button" class="contact_button"><pre>Contact Me</pre></button>
+        <button id="contact_button" class="contact_button">Contact Me</button>
       <div class="photo_section"></div>
     </div>
     </main>
-    <div id="drop-dowm-menu" class="drop-dowm-menu" aria-expanded="true">
+    <div id="drop-dowm-menu" class="drop-dowm-menu">
       <div class="order">
         Order By</div>
-      <div class="menu">
-        <div onClick="sortData('popularity')" class="menu-title">
-          Popularity<i class="fas fa-angle-up icon1" aria-hidden="true"></i><i class="fas fa-angle-down icon4" aria-hidden="true"></i>
+      <div class="menu" id="menu">
+        <div onClick="sortData('popularity')" class="sort menu-title" id="popularity">
+          Popularity<em class="fas fa-angle-up icon1" aria-hidden="true"></em><em class="fas fa-angle-down icon4" aria-hidden="true"></em>
         </div>
         <div class="sub-menu">
           <ul>
             <li>
-              <a href="#"><span onclick="sortData('date')"class="date">Date</span></a>
+              <a href="#"><span onclick="sortData('date')" class="sort date" id="date">Date</span></a>
             </li>
             <li>
-              <a href="#"><span onclick="sortData('name')"class="title">Title</span></a>
+              <a href="#"><span onclick="sortData('name')" class="sort title" id="title">Title</span></a>
             </li>
           </ul>
         </div>
@@ -61,18 +61,18 @@
 			<div class="modalA">
 				<header>
           <h2>Contact me</h2>
-          <img src="assets/icons/close.svg" id="closeModal" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" id="closeModal" onclick="closeModal()" alt="closeIcon"/>
         </header>
 				<form id="form">
-					<div role="group" aria-labelledby="contact information">
-						<label for="first name">First Name</label>
-						<input type="text" class="form-control" name="first name" id="firstName" placeholder="First Name" required aria-describedby="feedback-message"/>
-            <label for="last name">Last Name</label>
-						<input type="text" class="form-control" name="last name" id="lastName"  placeholder="Last Name"required aria-describedby="feedback-message"/>
+					<div role="group" id="contact" aria-labelledby="contact">
+						<label for="firstName">First Name</label>
+						<input type="text" class="form-control" name="first name" id="firstName" placeholder="First Name" required/>
+            <label for="lastName">Last Name</label>
+						<input type="text" class="form-control" name="last name" id="lastName"  placeholder="Last Name" required/>
             <label for="email">Email</label>
-						<input type="email" class="form-control" name="email" id="email" placeholder="email" required aria-describedby="feedback-message"/>
+						<input type="email" class="form-control" name="email" id="email" placeholder="email" required/>
             <label for="message">Message</label>
-						<textarea cols="30" rows="10" type="text" class="form-control" name="message" id="message" placeholder="message"></textarea>
+						<textarea cols="30" rows="10" class="form-control" name="message" id="message" placeholder="message"></textarea>
 					</div>
           <button class="contact_button" type="submit">Send</button>
 				</form>
@@ -84,10 +84,8 @@
     crossorigin="anonymous"></script>
     <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     <script src="scripts/factories/photographs.js"></script>
-    <script src="scripts/factories/photo.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/pages/gallery.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
 
    

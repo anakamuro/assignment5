@@ -1,6 +1,5 @@
   
    async function getPhotographers() {
-    // TODO : Replace with data from the JSON file
    return await(await fetch("/data/photographers.json")).json();
 }
    

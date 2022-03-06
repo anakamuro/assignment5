@@ -1,3 +1,27 @@
+menu = document.getElementById('menu');
+sort_buttons = document.getElementsByClassName('sort');
+count = 0;
+window.addEventListener("keyup", function(e){
+  if(e.key == "ArrowUp" | e.key == "ArrowDown"){
+    if(sort_buttons[count].id == "date"){
+      console.log( "id")
+      sortData('date')
+    }
+    if(sort_buttons[count].id == "title"){
+      sortData('name')
+    }
+    if(sort_buttons[count].id == "popularity"){
+      sortData('popularity')
+    }
+    if(count == sort_buttons.length-1){
+      count = 0
+    } else {
+      count++
+      console.log(count)
+    }
+  }
+})
+
 const getPhotoContent = fetch(`/data/photographers.json`)
   .then((response) => response.json())
   .then((data) => {
@@ -132,16 +156,6 @@ document.querySelector(".drop-dowm-menu").style.display = "block";
 
 var modal = document.getElementById("myModal");
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-/*
-var img = document.getElementById("myImg");
-var modalImg = document.getElementById("img01");
-img.onclick = function(){
-modal.style.display = "block";
-modalImg.src = this.src;
-}
-*/
-
 var count = 0
 var prevButton = document.querySelector('.prev');
 var nextButton = document.querySelector('.next');
@@ -182,23 +196,9 @@ function plusSlides(n,ID) {
      imgCount = imgCount + 1;  
    }
  }
- // x = count
- //x = Math.floor(Math.random() * (media.length-1));
- // for (let x = 0; x < media.length; x++) {
- //showSlides(media[x].id)
- //count = count + 1;
- //console.log(count)
- 
- 
-   // x = count
-  //  x = Math.floor(Math.random() * (media.length-1));
-  // for (let x = 0; x < media.length; x++) {
-  // showSlides(media[x].id)
-    //count = count + 1;
    console.log(count)
   }
   )
-//  showSlides(slideIndex += n);
 }
 
 function currentSlide(n) {
@@ -217,9 +217,6 @@ var i;
 var individual_id;
 var slides = document.getElementsByClassName("myslides");
 
-// var captionText = document.getElementById("caption");
-// if (n > slides.length) {slideIndex = 1}
-// if (n < 1) {slideIndex = slides.length}
 for (i = 0; i < slides.length; i++) {
   slides[i].style.display = "none";
 }
@@ -227,39 +224,8 @@ for (i = 0; i < slides.length; i++) {
 var unique_id = "unique-"+n
 var individual_id = document.getElementById(unique_id);
 individual_id.style.display = "block";
-
-// slides[slideIndex-1].style.display = "block";
-//dots[slideIndex-1].className += " active";
-// captionText.innerHTML = dots[slideIndex-1].alt;
 }
 
-// const lightbox = document.createElement('div');
-// lightbox.id  = 'lightbox';
-// const grid = document.querySelector('.grid')
-// //grid.appendChild(lightbox);
-// //grid.appendChild(images2);
-// document.body.appendChild(lightbox);
-
-// const images2 = document.querySelectorAll('.grid img');
-// images2.forEach(image =>{
-//   image.addEventListener('click', e =>{
-//     console.log('clicked');
-//     lightbox.classList.add('active')
-//     console.log(image);
-//     const img = document.createElement('img');
-//     img.src = image.src
-//     while(lightbox.firstChild){
-//       lightbox.removeChild(lightbox.firstChild)
-//     }
-//     lightbox.appendChild(img)
-//     console.log(lightbox)
-//   })
-// })
-
-// lightbox.addEventListener('click',e => {
-//   if(e.target !== e.currrentTarget) return
-//   lightbox.classList.remove('active')
-// } )
 
 function sortData(parameter){
 if (parameter == "popularity"){
@@ -408,75 +374,7 @@ window.addEventListener('keyup', (e) => {
     imgCount = imgCount + 1;  
   }
 }
-// x = count
-//x = Math.floor(Math.random() * (media.length-1));
-// for (let x = 0; x < media.length; x++) {
-//showSlides(media[x].id)
-//count = count + 1;
-//console.log(count)
 })
 })
-// dropdown menu 
-var x = buttonCount;
-   console.log("image count",imgCount)
-   if (e.key === "ArrowUp" || e.key === 'up') {
-     if (x < button.length+1 && x>=1) {
-      buttonCount = buttonCount - 1;
-  } else {
-    x = button.length - 1
-    buttonCount = button.length - 1
-    showSlides(media[x].id) 
-  }
-} else {
-  if (x >= button.length) {
-    buttonCount = 0
-    x = 0
-  } else {
-    buttonCount = buttonCount + 1;  
-  }
-}
 
 
-
-
-/*
-const imageTotalNumber = `${media[i].length}`;
-let currentSlideNumber = 1;
-prevImageElement.addEventlisener('click', () => {
-  if (currentSlideNumber !== 1){
-     currentSlideNumber--
-     mainImageElement.setAttribute('src', `img/img${currentSlideNumber}.jpg`)
-     changeSlidesStatus()
-  }
-})
-nextImageElement.addEventlisener('click', () => {
-  if (currentSlideNumber !== imageTotalNumber){
-     currentSlideNumber++
-     mainImageElement.setAttribute('src', `img/img${currentSlideNumber}.jpg`)
-     changeSlidesStatus()
-  }
-})
-function changeSlidesStatus(){
-  if(currentSlideNumber === 1){
-    prevImageElement.classList.add('inActive')
-  } else {
-    prevImageElement.classList.remove('inActive')
-  }
-  if(currentSlideNumber === imageTotalNumber){
-    nextImageElement.classList.add('inActive')
-  } else {
-    nextImageElement.classList.remove('inActive')
-  }
-}
-changeSlideStastus();
-for(i = 0; i < imageTotalNumber; i++){
-  const liElement = document.createElement('li')
-  liElement.style.backgroundImage = `url(img/img${i + 1}.jpg)`
-liElement.addEventListenerr('click', ()=> {
-  liElement.setAtttribute('src', `img/img${i + 1}.jpg`)
-  currentSlideNumber = i + 1
-  changeSlideStatus()
-})
-  imageListElement.appendChild(liElement)
-}
-*/

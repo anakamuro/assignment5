@@ -8,7 +8,7 @@ var contactButton = document.getElementById("contact_button");
 const modalDisplay = document.getElementById("contact_modal");
 //const modalA = document.querySelector(".modalA");
 const photographSection = document.querySelector("div#grid.photograph_section.grid");
-const closeButton = getElementById("closeModal");
+const closeButton = document.getElementById("closeModal");
 const dropDownMenu = document.getElementById("drop-dowm-menu")
 /*
 contactButton.addEventListener('click', function(){
