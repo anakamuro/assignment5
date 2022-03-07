@@ -4,6 +4,11 @@
 .show{
   display: block;
 }
+img#close_modal {
+  position: relative;
+  top: 30px;
+  left: 30px;
+}
 /*
 header a img {
   height: 50px;
@@ -70,6 +75,7 @@ img.logo {
 }
 
 .modalA {
+    position: relative;
     display: none;
     border-radius: 5px;
     background-color: #DB8876;
@@ -115,6 +121,7 @@ form div {
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
+    padding-top: 150px;
 }
 
 form input {
@@ -540,6 +547,9 @@ form input {
       
       img {
         margin-bottom: -4px;
+        position: absolute;
+        top: 30px;
+        left: 433px;
       }
       
       .caption-container {
@@ -567,6 +577,12 @@ form input {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       }
       
+      .contact-text {
+        position: absolute;
+        top: 0px;
+        left: 35px;
+        font-size: 50px;
+      }
      
      /*added
 

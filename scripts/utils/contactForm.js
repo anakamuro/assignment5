@@ -47,7 +47,7 @@ function redirect(){
 
 var form = document.getElementById('form');
 
-form.addEventListener('submit', function(event){
+contactButton.addEventListener('submit', function(event){
     event.preventDefault()
 
     var firstName = document.getElementById('firstName').value
@@ -61,5 +61,4 @@ form.addEventListener('submit', function(event){
 
     var message = document.getElementById('message').value
     console.log(message)
-    form.style.display = block;
 })

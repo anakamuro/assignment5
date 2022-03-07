@@ -75,6 +75,6 @@ main {
 .text {
     line-height: .1;
     position: relative;
-    top: 188px;
-    left: 85px;
+    top: 0px;
+    left: 0px;
 }

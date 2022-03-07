@@ -96,8 +96,8 @@ fetch(`/data/photographers.json`)
      let media_values = '';
     const media_content = [];
     let media_detail ="";
+    let modal_detail = '';
     const media_detail_list = []
-    media_dropdown = '';
     for (let i = 0; i < media.length; i++) {
       //  console.log(media[i]);
        // const img = `<div class="img-set column"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img></a>
@@ -132,6 +132,7 @@ fetch(`/data/photographers.json`)
    // document.querySelector(".dropdown").innerHTML = media_dropdown.join('\n');
     document.querySelector(".grid").innerHTML = media_content.join('\n');
     document.querySelector(".modal-content").innerHTML = media_detail_list.join('\n');
+    
   
 
   });
@@ -377,4 +378,51 @@ window.addEventListener('keyup', (e) => {
 })
 })
 
+function modalDetail() {
 
+getPhotoContent.then((data) => {
+  const photographers = data.photographers;
+  let newmediaList = [];
+  
+  for (var i = 0; i < media.length; i++) {
+    if (photographers[i].photographerId == ID) {
+      newmediaList.push(photographers[i]);
+    }
+  }
+
+  return newmediaList;
+})
+.then((photographers) => {
+    let modal_detail = '';
+    for (let i = 0; i < media.length; i++) {
+      //  console.log(media[i]);
+       // const img = `<div class="img-set column"><a href='/assets/images/photographers/${ID}/${media[i].image}'><img src='/assets/images/photographers/${ID}/${media[i].image}' onclick="openModal();" class="hover-shadow cursor image3" id="myImg"></img></a>
+
+        modal_detail = `<div id="contact_modal" role="dialog" aria-modal="false">
+        <div class="modalA">
+          <header>
+            <h2 class="contact-text">Contact me</h2>
+            <h2 class="contact-photographer">${photographers[i].name}</h2>
+            <img src="assets/icons/close.svg" id="closeModal" onclick="closeModal()" alt="closeIcon"/>
+          </header>
+          <form id="form">
+            <div role="group" id="contact" aria-labelledby="contact">
+              <label for="firstName">First Name</label>
+              <input type="text" class="form-control" name="first name" id="firstName" placeholder="First Name" required/>
+              <label for="lastName">Last Name</label>
+              <input type="text" class="form-control" name="last name" id="lastName"  placeholder="Last Name" required/>
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="email" required/>
+              <label for="message">Message</label>
+              <textarea cols="30" rows="10" class="form-control" name="message" id="message" placeholder="message"></textarea>
+            </div>
+            <button id="contact_button" class="contact_button" type="submit">Send</button>
+          </form>
+        </div>
+      </div>`
+       }
+       document.querySelector("#contact_modal").innerHTML = modal_detail.join('\n');
+  })
+}
+
+modalDetail()
