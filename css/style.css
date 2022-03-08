@@ -49,7 +49,6 @@ h1 {
     display: flex;
     flex-direction: row;
 }
-
 .info {
    display: flex;
    justify-content: flex-start;
@@ -75,6 +74,6 @@ main {
 .text {
     line-height: .1;
     position: relative;
-    top: 0px;
-    left: 0px;
+    top: 188px;
+    left: 85px;
 }
