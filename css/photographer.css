@@ -12,11 +12,15 @@ left: 30px;
 }
 */
 .contact-text {
-  position: relative;
-  top: 0px;
-  left: -235px;
+  position: absolute;
+  top: -17px;
+  left: 35px;
   font-size: 40px;
 }
+ div#contact {
+   position: relative;
+   top: -87px;
+ }
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;
@@ -53,6 +57,8 @@ width: 300px;
 img.logo {
 margin-bottom: 50px;
 width: 200px;
+position: relative;
+top: 30px;
 }
 /*
 #info {
@@ -74,25 +80,32 @@ width: 200px;
   border-radius: 5px;
   cursor: pointer;
 }
+#sendButton {
+  position: absolute;
+  top: 691px;
+  left: 35px;
+}
 
 .modalA {
+  position: relative;
   display: none;
   border-radius: 5px;
   background-color: #DB8876;
   width: 50%;
+  height: 733px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  margin: 3% auto;
 }
 
  img#closeModal {
-   font-size: 10px;
+   font-size: 5px;
    position: relative;
-   top: -80px;
-   right: -390px;
+   top: -8px;
+   right: -200px;
  }
 
 .modal header {
@@ -372,8 +385,8 @@ form input {
       grid-template-rows: 300px 300px 300px;
       justify-content: center;
       align-items: center;
-      grid-gap: 400px 50px;
-      height: 100vh;
+      grid-gap: 55px 50px;
+      height: 100%;
       width: 1200px;
     }
     .grid img {

@@ -6,6 +6,7 @@ function displayModal() {
 
 var contactButton = document.getElementById("contact_button");
 const modalDisplay = document.getElementById("contact_modal");
+var contactText = document.getElementsByClassName("contact-text")[0];
 //const modalA = document.querySelector(".modalA");
 const photographSection = document.querySelector("div#grid.photograph_section.grid");
 const closeButton = document.getElementById("closeModal");
@@ -18,8 +19,10 @@ contactButton.addEventListener('click', function(){
 })
 */
 
-function displayModal() {
+function displayModal(photographerName) {
    modalDisplay.style.display = "block";
+
+   contactText.innerHTML = `Contact me <br> ${photographerName}`
    //modalA.style.display = "none";
    photographSection.style.display = "none";
    dropDownMenu.style.display = "none";
@@ -42,7 +45,7 @@ function closeModal() {
 }
 
 function redirect(){
-    window.location.href="index.html";
+    window.location.href= window.location.href;
   }
 
 var form = document.getElementById('form');

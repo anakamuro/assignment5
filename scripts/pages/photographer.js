@@ -23,7 +23,7 @@ function fetchData() {
                   <h4 class="place">${photographer.city}, ${photographer.country}</h4>
                   <h4 class="line"><pre>${photographer.tagline}</pre></h4>
                   </div> 
-                  <button class="contact_button" onclick="displayModal()">Contact Me</button>
+                  <button class="contact_button" onclick="displayModal('${photographer.name}')">Contact Me</button>
                   <div class="photo_section"><img src="assets/photographers/${photographer.portrait}" class="img"></div>
                 </div>`;
          }

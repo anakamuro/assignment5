@@ -23,7 +23,7 @@
       
       <div class="photograph-header">
         <div class="info"></div>
-        <button id="contact_button" class="contact_button">Contact Me</button>
+        <button aria-label="contact button" id="contact_button" class="contact_button">Contact Me</button>
       <div class="photo_section"></div>
     </div>
     </main>
@@ -49,7 +49,7 @@
     <div id="grid" class="photograph_section grid">
       <div id="lightbox"></div>
       <div id="myModal" class="modal">
-        <span class="close cursor" onclick="stopModal()">&times;</span>
+        <span aria-label="close button" class="close cursor" onclick="stopModal()">&times;</span>
         <div class="modal-content">
 
          </div>
@@ -60,10 +60,10 @@
     <div id="contact_modal" role="dialog" aria-modal="false">
 			<div class="modalA">
 				<header>
-          <h2 class="contact-text">Contact me</h2>
+          <h2 class="contact-text"></h2>
           <img src="assets/icons/close.svg" id="closeModal" onclick="closeModal()" alt="closeIcon"/>
         </header>
-				<form id="form">
+				<form id="form" method="dialog">
 					<div role="group" id="contact" aria-labelledby="contact">
 						<label for="firstName">First Name</label>
 						<input type="text" class="form-control" name="first name" id="firstName" required/>
@@ -72,9 +72,9 @@
             <label for="email">Email</label>
 						<input type="email" class="form-control" name="email" id="email" required/>
             <label for="message">Message</label>
-						<textarea cols="88" rows="10" class="form-control" name="message" id="message"></textarea>
+						<textarea cols="57" rows="10" class="form-control" name="message" id="message"></textarea>
 					</div>
-          <button id="contact_button" class="contact_button" type="submit">Send</button>
+          <button id="sendButton" class="contact_button" onClick="redirect()">Send</button>
 				</form>
 			</div>
 		</div>
