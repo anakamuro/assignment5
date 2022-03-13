@@ -4,6 +4,7 @@ function displayModal() {
 	modal.style.display = "block";
 }*/
 
+var submit_button = document.getElementsByClassName("submit_button")[0];
 var contactButton = document.getElementById("contact_button");
 const modalDisplay = document.getElementById("contact_modal");
 var contactText = document.getElementsByClassName("contact-text")[0];
@@ -51,7 +52,7 @@ function redirect() {
 
 var form = document.getElementById("form");
 
-contactButton.addEventListener("submit", function (event) {
+form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   var firstName = document.getElementById("firstName").value;
@@ -65,4 +66,5 @@ contactButton.addEventListener("submit", function (event) {
 
   var message = document.getElementById("message").value;
   console.log(message);
+  redirect()
 });

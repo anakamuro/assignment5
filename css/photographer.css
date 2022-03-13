@@ -79,6 +79,18 @@ img.logo {
   border-radius: 5px;
   cursor: pointer;
 }
+.submit_button{
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 220px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
 #sendButton {
   position: absolute;
   top: 691px;
